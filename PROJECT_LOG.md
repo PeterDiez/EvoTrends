@@ -6,6 +6,35 @@
 
 ## SESSION LOG
 
+### [2026-03-26] — Сессия #2
+**Статус:** Completed
+
+**Что сделано:**
+- Применена цветовая схема Nordic Sunrise (Navy #003366 + Orange #FF6633) — CSS-переменные обновлены
+- Исправлены все хардкодированные цвета rgba(0,212,255,...) → rgba(255,102,51,...) в style.css
+- Создан SVG логотип: круг O + диагональ EV, orange/amber, вставлен во все 7 страниц (nav + footer)
+- Добавлена анимация логотипа на главной странице: stroke-draw (рисование) + медленное вращение
+- Герой index.html переделан в 2-колоночный layout на десктопе (текст + анимированный логотип)
+- Обновлён email в contact.html: info@evotrends.pro → petr.desyatov@gmail.com
+
+**Текущее состояние:**
+- Все файлы сайта обновлены и готовы к деплою
+- Контактная форма: Formspree (нужно заменить YOUR_FORM_ID в contact.html)
+
+**Открытые задачи:**
+- [ ] Загрузить изменения в GitHub (git add . && git commit -m "Nordic Sunrise rebrand + SVG logo animation" && git push)
+- [ ] Активировать Formspree форму (заменить YOUR_FORM_ID в contact.html)
+- [ ] Настроить GitHub Pages если ещё не сделано
+- [ ] Подключить Cloudflare + домен evotrends.pro
+- [ ] Добавить новые проекты (Пётр обещал описать)
+- [ ] Опционально: добавить фото в about.html
+- [ ] Опционально: добавить LinkedIn URL в contact.html сайдбар
+
+**Следующий шаг:**
+Push в GitHub → проверить сайт онлайн → активировать Formspree
+
+---
+
 ### [2026-03-26] — Сессия #1
 **Статус:** Completed
 **GitHub Repo:** https://github.com/PeterDiez/EvoTrends.git
