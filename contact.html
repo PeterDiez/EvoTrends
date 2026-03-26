@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — EvoTrends</title>
+  <meta name="description" content="Start a conversation with EvoTrends. Whether you need to commercialize technology, raise funding, build a consortium, or enter EU markets.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 60px;
+      align-items: start;
+    }
+    @media (max-width: 900px) { .contact-layout { grid-template-columns: 1fr; } }
+
+    .contact-sidebar { display: flex; flex-direction: column; gap: 20px; }
+
+    .contact-info-card {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: 28px;
+    }
+    .contact-info-card h3 {
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 18px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border);
+    }
+    .contact-info-list { display: flex; flex-direction: column; gap: 12px; }
+    .contact-info-item { display: flex; gap: 12px; align-items: flex-start; }
+    .contact-info-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+    .contact-info-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text3);
+      margin-bottom: 2px;
+    }
+    .contact-info-value { font-size: 14px; color: var(--text2); }
+    .contact-info-value a { color: var(--cyan); transition: var(--t); }
+    .contact-info-value a:hover { opacity: 0.8; }
+
+    .topic-selector {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 32px;
+    }
+    .topic-btn {
+      background: rgba(0,212,255,0.07);
+      border: 1px solid rgba(0,212,255,0.2);
+      color: var(--cyan);
+      padding: 9px 18px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: var(--t);
+      font-family: inherit;
+    }
+    .topic-btn:hover, .topic-btn.active {
+      background: var(--cyan);
+      color: #050c1a;
+      border-color: var(--cyan);
+    }
+    .topic-label {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--text2);
+      margin-bottom: 14px;
+    }
+    .form-submit {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .form-note {
+      font-size: 12px;
+      color: var(--text3);
+      line-height: 1.5;
+    }
+    .privacy-note {
+      font-size: 12px;
+      color: var(--text3);
+    }
+    .linkedin-btn {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(0,119,181,0.1);
+      border: 1px solid rgba(0,119,181,0.25);
+      color: #60b8e8;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      transition: var(--t);
+    }
+    .linkedin-btn:hover {
+      background: rgba(0,119,181,0.18);
+      border-color: rgba(0,119,181,0.5);
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="logo"><span class="logo-accent">Evo</span>Trends</a>
+    <div class="nav-links">
+      <a href="index.html"    class="nav-link">Home</a>
+      <a href="services.html" class="nav-link">Services</a>
+      <a href="approach.html" class="nav-link">Approach</a>
+      <a href="expertise.html" class="nav-link">Expertise</a>
+      <a href="projects.html" class="nav-link">Projects</a>
+      <a href="about.html"    class="nav-link">About</a>
+      <a href="contact.html"  class="nav-cta">Contact Us</a>
+    </div>
+    <button class="nav-toggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- PAGE HEADER -->
+<section class="page-header">
+  <div class="page-glow"></div>
+  <div class="container">
+    <div class="page-header-content">
+      <div class="section-label">Contact</div>
+      <h1 class="page-title">Start a <span class="gradient-text">Conversation</span></h1>
+      <p class="page-subtitle">Tell us what you're working on. We'll respond within 24 hours with an honest assessment of whether and how we can help.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT FORM + SIDEBAR -->
+<section class="section" style="padding-top: 0;">
+  <div class="container">
+    <div class="contact-layout">
+
+      <!-- FORM -->
+      <div>
+        <div class="topic-label">What are you looking for?</div>
+        <div class="topic-selector">
+          <button class="topic-btn" data-topic="Build a Consortium"      onclick="setTopic(this)">Build a Consortium</button>
+          <button class="topic-btn" data-topic="Commercialize Technology" onclick="setTopic(this)">Commercialize Technology</button>
+          <button class="topic-btn" data-topic="Enter EU Market"          onclick="setTopic(this)">Enter EU Market</button>
+          <button class="topic-btn" data-topic="Raise Funding"            onclick="setTopic(this)">Raise Funding</button>
+          <button class="topic-btn" data-topic="Other / Custom Project"   onclick="setTopic(this)">Other / Custom Project</button>
+        </div>
+
+        <!--
+          FORM BACKEND SETUP:
+          This form uses Formspree (https://formspree.io) as the backend.
+          Steps to activate:
+            1. Go to https://formspree.io and create a free account
+            2. Create a new form and get your form ID
+            3. Replace "YOUR_FORM_ID" in the action URL below with your actual ID
+          Alternative: Use Netlify Forms by adding data-netlify="true" attribute
+        -->
+        <form class="form"
+              action="https://formspree.io/f/YOUR_FORM_ID"
+              method="POST">
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="name">Your Name *</label>
+              <input class="form-input" type="text" id="name" name="name"
+                     placeholder="Peter Smith" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="email">Email Address *</label>
+              <input class="form-input" type="email" id="email" name="email"
+                     placeholder="you@company.com" required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="company">Company / Organization</label>
+              <input class="form-input" type="text" id="company" name="company"
+                     placeholder="Your company name">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="subject">Topic</label>
+              <select class="form-select" id="subject" name="subject">
+                <option value="">Select a topic...</option>
+                <option value="Build a Consortium">Build a Consortium</option>
+                <option value="Commercialize Technology">Commercialize Technology</option>
+                <option value="Enter EU Market">Enter EU Market</option>
+                <option value="Raise Funding">Raise Funding</option>
+                <option value="R&amp;D Partnership">R&amp;D Partnership</option>
+                <option value="Other / Custom Project">Other / Custom Project</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="message">Tell Us About Your Challenge *</label>
+            <textarea class="form-textarea" id="message" name="message"
+                      placeholder="Describe your technology, current stage, key challenge, and what kind of support you're looking for..."
+                      required></textarea>
+          </div>
+
+          <!-- Hidden field for Formspree redirect handling -->
+          <input type="hidden" name="_subject" value="New EvoTrends Inquiry">
+          <input type="hidden" name="_next" value="">
+
+          <div class="form-submit">
+            <button type="submit" class="btn btn-primary" style="align-self: flex-start;">
+              Send Message &rarr;
+            </button>
+            <p class="form-note">We respond within 24 hours. All inquiries are treated with full confidentiality — NDA available on request.</p>
+          </div>
+        </form>
+      </div>
+
+      <!-- SIDEBAR -->
+      <div class="contact-sidebar reveal">
+        <div class="contact-info-card">
+          <h3>Contact Information</h3>
+          <div class="contact-info-list">
+            <div class="contact-info-item">
+              <span class="contact-info-icon">✉️</span>
+              <div>
+                <div class="contact-info-label">Email</div>
+                <div class="contact-info-value">
+                  <a href="mailto:info@evotrends.pro">info@evotrends.pro</a>
+                </div>
+              </div>
+            </div>
+            <div class="contact-info-item">
+              <span class="contact-info-icon">🌐</span>
+              <div>
+                <div class="contact-info-label">Website</div>
+                <div class="contact-info-value">evotrends.pro</div>
+              </div>
+            </div>
+            <div class="contact-info-item">
+              <span class="contact-info-icon">🌍</span>
+              <div>
+                <div class="contact-info-label">Coverage</div>
+                <div class="contact-info-value">Europe, Asia, Africa, CIS</div>
+              </div>
+            </div>
+            <div class="contact-info-item">
+              <span class="contact-info-icon">⏱️</span>
+              <div>
+                <div class="contact-info-label">Response Time</div>
+                <div class="contact-info-value">Within 24 hours</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-info-card">
+          <h3>What Happens Next</h3>
+          <div class="svc-items" style="padding: 0;">
+            <div class="svc-item"><span class="svc-arrow">›</span> We review your inquiry carefully</div>
+            <div class="svc-item"><span class="svc-arrow">›</span> We respond with an honest assessment</div>
+            <div class="svc-item"><span class="svc-arrow">›</span> If there's a fit, we schedule a call</div>
+            <div class="svc-item"><span class="svc-arrow">›</span> We propose a scope of work together</div>
+            <div class="svc-item"><span class="svc-arrow">›</span> NDA available at any stage</div>
+          </div>
+        </div>
+
+        <div class="contact-info-card">
+          <h3>Good Fit If You Have...</h3>
+          <div class="svc-items" style="padding: 0;">
+            <div class="svc-item"><span class="svc-arrow">›</span> A technology ready to commercialize</div>
+            <div class="svc-item"><span class="svc-arrow">›</span> An R&amp;D project needing market direction</div>
+            <div class="svc-item"><span class="svc-arrow">›</span> A funding need (EU grants or investors)</div>
+            <div class="svc-item"><span class="svc-arrow">›</span> Plans to enter European or global markets</div>
+            <div class="svc-item"><span class="svc-arrow">›</span> A need for consortium building</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo"><span class="logo-accent">Evo</span>Trends</a>
+        <p>Strategic commercialization partner for DeepTech and R&amp;D-driven companies entering real markets.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul class="footer-links">
+          <li><a href="services.html" class="footer-link">Funding &amp; Fundraising</a></li>
+          <li><a href="services.html" class="footer-link">Go-to-Market</a></li>
+          <li><a href="services.html" class="footer-link">R&amp;D Commercialization</a></li>
+          <li><a href="services.html" class="footer-link">Business Development</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul class="footer-links">
+          <li><a href="about.html"     class="footer-link">About</a></li>
+          <li><a href="expertise.html" class="footer-link">Expertise</a></li>
+          <li><a href="projects.html"  class="footer-link">Projects</a></li>
+          <li><a href="approach.html"  class="footer-link">Approach</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Get in Touch</h4>
+        <ul class="footer-links">
+          <li><a href="contact.html" class="footer-link">Start a Project</a></li>
+          <li><a href="contact.html?s=consortium" class="footer-link">Build a Consortium</a></li>
+          <li><a href="contact.html?s=funding"    class="footer-link">Raise Funding</a></li>
+          <li><a href="contact.html?s=market"     class="footer-link">Enter EU Market</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 EvoTrends. All rights reserved.</span>
+      <span>Commercializing Complex Technologies</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script>
+  function setTopic(btn) {
+    document.querySelectorAll('.topic-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const sel = document.getElementById('subject');
+    if (sel) sel.value = btn.dataset.topic;
+  }
+
+  // Pre-select topic from URL param
+  const sp = new URLSearchParams(location.search);
+  const t = sp.get('s');
+  const topicMap = {
+    consortium: 'Build a Consortium',
+    tech:       'Commercialize Technology',
+    market:     'Enter EU Market',
+    funding:    'Raise Funding',
+  };
+  if (t && topicMap[t]) {
+    document.querySelectorAll('.topic-btn').forEach(b => {
+      if (b.dataset.topic === topicMap[t]) {
+        b.classList.add('active');
+        const sel = document.getElementById('subject');
+        if (sel) sel.value = topicMap[t];
+      }
+    });
+  }
+</script>
+</body>
+</html>

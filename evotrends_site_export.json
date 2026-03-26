@@ -1,0 +1,202 @@
+{
+  "site_name": "EvoTrends",
+  "tagline": "Commercializing Complex Technologies",
+  "positioning": "DeepTech Strategy, Fundraising & Market Entry Partner",
+  "core_focus": [
+    "DeepTech",
+    "R&D",
+    "Industrial",
+    "Funding & Fundraising",
+    "Go-to-market"
+  ],
+  "menu": [
+    {
+      "name": "Home",
+      "sections": [
+        "Hero",
+        "Value Proposition",
+        "Core Services Overview",
+        "Selected Cases",
+        "Industries",
+        "CTA"
+      ]
+    },
+    {
+      "name": "Services",
+      "categories": [
+        {
+          "name": "Funding & Fundraising",
+          "items": [
+            "Horizon Europe Strategy & Proposal Architecture",
+            "Consortium Building & Partner Acquisition",
+            "Investor & VC Fundraising Support",
+            "Grant Positioning & Narrative Development"
+          ]
+        },
+        {
+          "name": "Go-to-Market & Product Development",
+          "items": [
+            "Market Research & Validation",
+            "Customer Research",
+            "Product Strategy & Productization",
+            "Business Model Design",
+            "Pricing Strategy",
+            "Market Entry (EU & Global)"
+          ]
+        },
+        {
+          "name": "R&D Commercialization Strategy",
+          "items": [
+            "Technology Packaging for Market",
+            "Use-case Definition",
+            "Commercialization Roadmap",
+            "Risk Analysis (Technical & Financial)"
+          ]
+        },
+        {
+          "name": "Business Development & Partnerships",
+          "items": [
+            "Strategic Partnerships (B2B, B2G)",
+            "Industrial Outreach",
+            "Lead Qualification Systems",
+            "AI-assisted Outreach Strategies"
+          ]
+        },
+        {
+          "name": "Global Representation & Positioning",
+          "items": [
+            "International Market Representation",
+            "Participation in Global Industry Events",
+            "Strategic Presence in Europe, Asia, Africa & CIS",
+            "Investor & Partner Communication"
+          ]
+        },
+        {
+          "name": "Custom Development",
+          "items": [
+            "Custom Software Development",
+            "IoT Solutions",
+            "Hardware Development",
+            "3D Design & Prototyping"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Products & Approach",
+      "sections": [
+        {
+          "name": "Technology-to-Product Framework",
+          "items": [
+            "Deep Analysis of Technologies",
+            "Value Extraction & Positioning",
+            "Transformation into Marketable Products",
+            "Adaptation to Target Audiences"
+          ]
+        },
+        {
+          "name": "Digital & AI Systems",
+          "items": [
+            "Lead Scoring Systems",
+            "Market Intelligence Tools",
+            "Automation for Business Development"
+          ]
+        },
+        {
+          "name": "Custom Solutions",
+          "items": [
+            "Tailored Systems for Industrial Clients",
+            "Integration into Existing Infrastructure"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Expertise",
+      "sections": [
+        {
+          "name": "Venture Growth & Business Tracking",
+          "description": "Structured support for early-stage and R&D-driven companies focused on growth, traction and strategic decision-making"
+        },
+        {
+          "name": "Scientific Approach to Market Entry",
+          "description": "Systematic transformation of ideas, technologies and prototypes into validated market solutions"
+        },
+        {
+          "name": "DeepTech Commercialization",
+          "description": "Bridging science and business through structured commercialization strategies"
+        },
+        {
+          "name": "Complex Systems Thinking",
+          "description": "Ability to operate in multi-layered environments combining technology, funding and market dynamics"
+        }
+      ]
+    },
+    {
+      "name": "Innovation & Projects",
+      "sections": [
+        {
+          "name": "Selected Work",
+          "items": [
+            {
+              "name": "FIDCHEM",
+              "role": "Commercialization Partner",
+              "description": "Strategic commercialization, fundraising and international positioning of deep-tech environmental solutions"
+            },
+            {
+              "name": "Resto-AI",
+              "role": "Co-founder / Product Development",
+              "description": "AI-driven product for the restaurant industry"
+            }
+          ]
+        },
+        {
+          "name": "Confidential Projects",
+          "description": "Multiple projects under NDA across industrial, AI and R&D sectors"
+        },
+        {
+          "name": "Consortium Building",
+          "description": "Experienced in building international R&D consortia combining universities, industry and public sector for EU funding programs"
+        }
+      ]
+    },
+    {
+      "name": "Industries",
+      "items": [
+        "DeepTech",
+        "Environmental Technologies",
+        "Industrial Solutions",
+        "AI & Digital Products",
+        "Advanced Manufacturing",
+        "Tourism (as separate vertical with proven experience)"
+      ]
+    },
+    {
+      "name": "Case Studies",
+      "items": [
+        "DeepTech Commercialization",
+        "Funding & Consortium Building",
+        "Market Entry Strategies",
+        "Product Development Cases"
+      ]
+    },
+    {
+      "name": "About",
+      "sections": [
+        "Positioning",
+        "Background",
+        "Approach",
+        "International Experience"
+      ]
+    },
+    {
+      "name": "Contact",
+      "cta_options": [
+        "Build a Consortium",
+        "Commercialize Technology",
+        "Enter EU Market",
+        "Raise Funding"
+      ]
+    }
+  ]
+}

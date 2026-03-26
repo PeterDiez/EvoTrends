@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects — EvoTrends</title>
+  <meta name="description" content="EvoTrends innovation portfolio: FIDCHEM, Resto-AI, consortium building, and confidential NDA engagements across industrial and DeepTech sectors.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .project-full {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      overflow: hidden;
+      transition: var(--t);
+    }
+    .project-full:hover { border-color: var(--border-h); }
+    .project-full-header {
+      padding: 36px 40px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .project-full-body {
+      padding: 36px 40px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+    @media (max-width: 700px) {
+      .project-full-header { padding: 28px; }
+      .project-full-body   { padding: 28px; grid-template-columns: 1fr; }
+    }
+    .project-full-name { font-size: 32px; font-weight: 900; letter-spacing: -1px; margin-bottom: 6px; }
+    .project-full-tagline { font-size: 16px; color: var(--text2); }
+    .project-detail-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--text3);
+      margin-bottom: 10px;
+    }
+    .project-detail-text { font-size: 15px; color: var(--text2); line-height: 1.7; }
+    .nda-card {
+      background: linear-gradient(135deg, rgba(124,58,237,0.07) 0%, rgba(0,212,255,0.07) 100%);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: 40px;
+      text-align: center;
+    }
+    .nda-icon { font-size: 40px; margin-bottom: 16px; }
+    .nda-title { font-size: 24px; font-weight: 800; margin-bottom: 12px; letter-spacing: -0.5px; }
+    .nda-desc  { font-size: 15px; color: var(--text2); max-width: 480px; margin: 0 auto; line-height: 1.7; }
+    .consortium-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 32px;
+    }
+    @media (max-width: 700px) { .consortium-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 460px) { .consortium-grid { grid-template-columns: 1fr; } }
+    .cons-item {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: 20px;
+      text-align: center;
+      transition: var(--t);
+    }
+    .cons-item:hover { border-color: var(--border-h); }
+    .cons-item-icon  { font-size: 26px; margin-bottom: 10px; }
+    .cons-item-title { font-size: 14px; font-weight: 700; }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="logo"><span class="logo-accent">Evo</span>Trends</a>
+    <div class="nav-links">
+      <a href="index.html"    class="nav-link">Home</a>
+      <a href="services.html" class="nav-link">Services</a>
+      <a href="approach.html" class="nav-link">Approach</a>
+      <a href="expertise.html" class="nav-link">Expertise</a>
+      <a href="projects.html" class="nav-link">Projects</a>
+      <a href="about.html"    class="nav-link">About</a>
+      <a href="contact.html"  class="nav-cta">Contact Us</a>
+    </div>
+    <button class="nav-toggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- PAGE HEADER -->
+<section class="page-header">
+  <div class="page-glow"></div>
+  <div class="container">
+    <div class="page-header-content">
+      <div class="section-label">Innovation &amp; Projects</div>
+      <h1 class="page-title">Selected <span class="gradient-text">Work</span></h1>
+      <p class="page-subtitle">A curated selection of projects and engagements. Many are under NDA — the ones we can share tell a representative story.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FIDCHEM -->
+<section class="section">
+  <div class="container">
+    <div class="section-label">Case 01</div>
+    <div class="project-full reveal">
+      <div class="project-full-header">
+        <div>
+          <div class="project-role">Commercialization Partner</div>
+          <div class="project-full-name">FIDCHEM</div>
+          <div class="project-full-tagline">Deep-tech environmental chemistry solutions</div>
+        </div>
+        <div class="tags">
+          <span class="tag">DeepTech</span>
+          <span class="tag">Environmental</span>
+          <span class="tag">EU Funding</span>
+        </div>
+      </div>
+      <div class="project-full-body">
+        <div>
+          <div class="project-detail-label">Challenge</div>
+          <p class="project-detail-text">FIDCHEM had developed advanced environmental chemistry solutions with genuine deep-tech differentiation — but lacked the strategic infrastructure to position, fund and scale the technology commercially in international markets.</p>
+        </div>
+        <div>
+          <div class="project-detail-label">Our Role</div>
+          <p class="project-detail-text">EvoTrends acted as full commercialization partner: designing the market positioning, structuring the funding strategy, building the investor narrative, and developing the international presence across EU markets and beyond.</p>
+        </div>
+        <div>
+          <div class="project-detail-label">Scope of Work</div>
+          <div class="svc-items" style="margin-top: 0;">
+            <div class="svc-item"><span class="svc-arrow">›</span> Commercialization strategy &amp; roadmap</div>
+            <div class="svc-item"><span class="svc-arrow">›</span> EU funding program positioning</div>
+            <div class="svc-item"><span class="svc-arrow">›</span> Investor relations &amp; fundraising support</div>
+            <div class="svc-item"><span class="svc-arrow">›</span> International market entry strategy</div>
+          </div>
+        </div>
+        <div>
+          <div class="project-detail-label">Markets</div>
+          <div class="tags mt-8">
+            <span class="tag">Europe</span>
+            <span class="tag">CIS</span>
+            <span class="tag tag-purple">Industrial</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESTO-AI -->
+<section class="section" style="background: var(--bg2); padding-top: 0;">
+  <div class="container" style="padding-top: 96px;">
+    <div class="section-label">Case 02</div>
+    <div class="project-full reveal">
+      <div class="project-full-header">
+        <div>
+          <div class="project-role">Co-founder / Product Development</div>
+          <div class="project-full-name">Resto-AI</div>
+          <div class="project-full-tagline">AI-driven platform for the restaurant industry</div>
+        </div>
+        <div class="tags">
+          <span class="tag">AI Product</span>
+          <span class="tag">SaaS</span>
+          <span class="tag tag-purple">Co-founded</span>
+        </div>
+      </div>
+      <div class="project-full-body">
+        <div>
+          <div class="project-detail-label">Challenge</div>
+          <p class="project-detail-text">The restaurant industry is high-turnover, low-margin, and notoriously resistant to technology adoption. Building an AI product that would genuinely solve operational problems — and then convincing restaurant owners to use it — required both technical and market rigour.</p>
+        </div>
+        <div>
+          <div class="project-detail-label">Our Role</div>
+          <p class="project-detail-text">As co-founder responsible for product and go-to-market, the work spanned the full journey: market research, product strategy, AI feature definition, business model design, and launch execution. From concept to commercial product.</p>
+        </div>
+        <div>
+          <div class="project-detail-label">Scope of Work</div>
+          <div class="svc-items" style="margin-top: 0;">
+            <div class="svc-item"><span class="svc-arrow">›</span> Market research &amp; customer discovery</div>
+            <div class="svc-item"><span class="svc-arrow">›</span> AI product strategy &amp; feature definition</div>
+            <div class="svc-item"><span class="svc-arrow">›</span> Business model &amp; pricing design</div>
+            <div class="svc-item"><span class="svc-arrow">›</span> Go-to-market strategy &amp; launch</div>
+          </div>
+        </div>
+        <div>
+          <div class="project-detail-label">Category</div>
+          <div class="tags mt-8">
+            <span class="tag">AI / SaaS</span>
+            <span class="tag">B2B</span>
+            <span class="tag tag-purple">Product Build</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONFIDENTIAL -->
+<section class="section">
+  <div class="container">
+    <div class="section-label">Additional Work</div>
+    <h2 class="section-title">Confidential Engagements</h2>
+    <p class="section-sub">A significant portion of our work is conducted under NDA — particularly in industrial and high-tech sectors where clients require discretion. Below is a non-specific overview.</p>
+
+    <div class="grid-3">
+      <div class="nda-card reveal">
+        <div class="nda-icon">🔒</div>
+        <div class="nda-title">Industrial AI Projects</div>
+        <p class="nda-desc" style="font-size: 14px; text-align: left; max-width: none;">Multiple engagements in industrial automation and AI applications — under NDA. Scope included technology assessment, market positioning, and commercialization strategy.</p>
+      </div>
+      <div class="nda-card reveal">
+        <div class="nda-icon">🔒</div>
+        <div class="nda-title">R&amp;D Commercialization</div>
+        <p class="nda-desc" style="font-size: 14px; text-align: left; max-width: none;">Working with R&amp;D teams transitioning from laboratory to market. Technology packaging, use-case definition, and investor preparation — details confidential.</p>
+      </div>
+      <div class="nda-card reveal">
+        <div class="nda-icon">🔒</div>
+        <div class="nda-title">High-Tech Market Entry</div>
+        <p class="nda-desc" style="font-size: 14px; text-align: left; max-width: none;">EU and cross-border market entry for technology companies in advanced sectors. Market strategy, partnership development, regulatory navigation — under NDA.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONSORTIUM BUILDING -->
+<section class="section" style="background: var(--bg2);">
+  <div class="container">
+    <div class="section-label">Consortium Building</div>
+    <h2 class="section-title">International R&amp;D Consortia</h2>
+    <p class="section-sub">Experienced in assembling and managing international R&amp;D consortia — combining universities, industry players and public sector entities for EU-funded collaborative programs.</p>
+
+    <div class="consortium-grid">
+      <div class="cons-item reveal">
+        <div class="cons-item-icon">🏛️</div>
+        <div class="cons-item-title">Universities &amp; Research Labs</div>
+      </div>
+      <div class="cons-item reveal">
+        <div class="cons-item-icon">🏭</div>
+        <div class="cons-item-title">Industrial Partners</div>
+      </div>
+      <div class="cons-item reveal">
+        <div class="cons-item-icon">🏛️</div>
+        <div class="cons-item-title">Public Sector Entities</div>
+      </div>
+      <div class="cons-item reveal">
+        <div class="cons-item-icon">💶</div>
+        <div class="cons-item-title">Horizon Europe Programs</div>
+      </div>
+      <div class="cons-item reveal">
+        <div class="cons-item-icon">🌐</div>
+        <div class="cons-item-title">Multi-Country Collaboration</div>
+      </div>
+      <div class="cons-item reveal">
+        <div class="cons-item-icon">📋</div>
+        <div class="cons-item-title">Grant Application Strategy</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section-sm">
+  <div class="container">
+    <div class="cta-box reveal">
+      <div class="section-label">New Projects</div>
+      <h2 class="cta-title">Working on Something <span class="gradient-text">Ambitious?</span></h2>
+      <p class="cta-text">We're always open to new engagements in DeepTech and R&amp;D commercialization. If your challenge matches our expertise — let's explore it.</p>
+      <div class="cta-opts">
+        <a href="contact.html?s=consortium" class="cta-opt">Build a Consortium</a>
+        <a href="contact.html?s=tech"       class="cta-opt">Commercialize Technology</a>
+        <a href="contact.html?s=market"     class="cta-opt">Enter EU Market</a>
+        <a href="contact.html?s=funding"    class="cta-opt">Raise Funding</a>
+      </div>
+      <a href="contact.html" class="btn btn-primary">Start a Conversation &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo"><span class="logo-accent">Evo</span>Trends</a>
+        <p>Strategic commercialization partner for DeepTech and R&amp;D-driven companies entering real markets.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul class="footer-links">
+          <li><a href="services.html" class="footer-link">Funding &amp; Fundraising</a></li>
+          <li><a href="services.html" class="footer-link">Go-to-Market</a></li>
+          <li><a href="services.html" class="footer-link">R&amp;D Commercialization</a></li>
+          <li><a href="services.html" class="footer-link">Business Development</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul class="footer-links">
+          <li><a href="about.html"     class="footer-link">About</a></li>
+          <li><a href="expertise.html" class="footer-link">Expertise</a></li>
+          <li><a href="projects.html"  class="footer-link">Projects</a></li>
+          <li><a href="approach.html"  class="footer-link">Approach</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Get in Touch</h4>
+        <ul class="footer-links">
+          <li><a href="contact.html" class="footer-link">Start a Project</a></li>
+          <li><a href="contact.html?s=consortium" class="footer-link">Build a Consortium</a></li>
+          <li><a href="contact.html?s=funding"    class="footer-link">Raise Funding</a></li>
+          <li><a href="contact.html?s=market"     class="footer-link">Enter EU Market</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 EvoTrends. All rights reserved.</span>
+      <span>Commercializing Complex Technologies</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

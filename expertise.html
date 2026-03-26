@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Expertise — EvoTrends</title>
+  <meta name="description" content="EvoTrends core competencies: Venture Growth, Scientific Market Entry, DeepTech Commercialization, and Complex Systems Thinking.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .competency-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      overflow: hidden;
+      margin-top: 48px;
+    }
+    @media (max-width: 800px) { .competency-strip { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 500px) { .competency-strip { grid-template-columns: 1fr; } }
+    .comp-item {
+      background: var(--bg2);
+      padding: 24px;
+      transition: var(--t);
+    }
+    .comp-item:hover { background: var(--bg3); }
+    .comp-item-label { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text3); margin-bottom: 6px; }
+    .comp-item-title { font-size: 15px; font-weight: 700; color: var(--text); }
+    .exp-blocks { display: flex; flex-direction: column; gap: 16px; }
+    .industries-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 32px;
+    }
+    @media (max-width: 700px) { .industries-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 460px) { .industries-grid { grid-template-columns: 1fr; } }
+    .ind-card {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: 24px 20px;
+      text-align: center;
+      transition: var(--t);
+    }
+    .ind-card:hover { border-color: var(--border-h); transform: translateY(-3px); }
+    .ind-icon  { font-size: 32px; margin-bottom: 12px; }
+    .ind-title { font-size: 14px; font-weight: 700; }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="logo"><span class="logo-accent">Evo</span>Trends</a>
+    <div class="nav-links">
+      <a href="index.html"    class="nav-link">Home</a>
+      <a href="services.html" class="nav-link">Services</a>
+      <a href="approach.html" class="nav-link">Approach</a>
+      <a href="expertise.html" class="nav-link">Expertise</a>
+      <a href="projects.html" class="nav-link">Projects</a>
+      <a href="about.html"    class="nav-link">About</a>
+      <a href="contact.html"  class="nav-cta">Contact Us</a>
+    </div>
+    <button class="nav-toggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- PAGE HEADER -->
+<section class="page-header">
+  <div class="page-glow"></div>
+  <div class="container">
+    <div class="page-header-content">
+      <div class="section-label">Expertise</div>
+      <h1 class="page-title">Core <span class="gradient-text">Competencies</span></h1>
+      <p class="page-subtitle">Four foundational areas of expertise that define how we think, how we work, and why we get results in environments where complexity is the norm.</p>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERTISE BLOCKS -->
+<section class="section">
+  <div class="container">
+    <div class="exp-blocks">
+      <div class="exp-block reveal">
+        <div class="exp-num">01</div>
+        <div>
+          <div class="exp-title">Venture Growth &amp; Business Tracking</div>
+          <p class="exp-desc">Structured support for early-stage and R&amp;D-driven companies focused on growth, traction and strategic decision-making. We work alongside founders and innovation teams to build the frameworks, metrics and decision processes that allow them to scale with confidence — not chaos. This includes growth strategy, KPI architecture, milestone planning and investor readiness.</p>
+        </div>
+      </div>
+
+      <div class="exp-block reveal">
+        <div class="exp-num">02</div>
+        <div>
+          <div class="exp-title">Scientific Approach to Market Entry</div>
+          <p class="exp-desc">Systematic transformation of ideas, technologies and prototypes into validated market solutions. We treat market entry like a scientific experiment — forming hypotheses, designing validation tests, interpreting results and iterating. This eliminates the costly mistake of building full go-to-market infrastructure around an unvalidated assumption. For complex technologies, this rigour is not optional — it is the difference between a successful launch and a failed pivot.</p>
+        </div>
+      </div>
+
+      <div class="exp-block reveal">
+        <div class="exp-num">03</div>
+        <div>
+          <div class="exp-title">DeepTech Commercialization</div>
+          <p class="exp-desc">Bridging science and business through structured commercialization strategies. DeepTech is a different category entirely from software startups. Longer development cycles, higher capital requirements, more complex stakeholder ecosystems (labs, universities, regulators, industrial clients) and the constant challenge of communicating technical differentiation to non-technical audiences. We specialize in exactly this environment. We understand both the science and the business — which is rare and critical.</p>
+        </div>
+      </div>
+
+      <div class="exp-block reveal">
+        <div class="exp-num">04</div>
+        <div>
+          <div class="exp-title">Complex Systems Thinking</div>
+          <p class="exp-desc">Ability to operate in multi-layered environments combining technology, funding and market dynamics simultaneously. Real commercialization doesn't happen in isolated tracks. Technology decisions affect funding narratives. Market positioning affects partnership negotiations. Funding strategy affects product roadmap. We hold all these threads simultaneously and make decisions that optimize across the whole system — not just one variable at a time.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPETENCY AREAS -->
+<section class="section" style="background: var(--bg2);">
+  <div class="container">
+    <div class="section-label">Functional Competencies</div>
+    <h2 class="section-title">What We Do Well</h2>
+    <p class="section-sub">Practical capabilities built across years of working in DeepTech and R&amp;D environments.</p>
+
+    <div class="competency-strip reveal">
+      <div class="comp-item">
+        <div class="comp-item-label">Strategy</div>
+        <div class="comp-item-title">Technology Commercialization Strategy</div>
+      </div>
+      <div class="comp-item">
+        <div class="comp-item-label">Funding</div>
+        <div class="comp-item-title">EU Grants &amp; Horizon Europe</div>
+      </div>
+      <div class="comp-item">
+        <div class="comp-item-label">Funding</div>
+        <div class="comp-item-title">VC &amp; Investor Fundraising</div>
+      </div>
+      <div class="comp-item">
+        <div class="comp-item-label">Market</div>
+        <div class="comp-item-title">European Market Entry</div>
+      </div>
+      <div class="comp-item">
+        <div class="comp-item-label">Market</div>
+        <div class="comp-item-title">Global Market Representation</div>
+      </div>
+      <div class="comp-item">
+        <div class="comp-item-label">Partnerships</div>
+        <div class="comp-item-title">R&amp;D Consortium Building</div>
+      </div>
+      <div class="comp-item">
+        <div class="comp-item-label">Product</div>
+        <div class="comp-item-title">Product Strategy &amp; Productization</div>
+      </div>
+      <div class="comp-item">
+        <div class="comp-item-label">Digital</div>
+        <div class="comp-item-title">AI-assisted Business Development</div>
+      </div>
+      <div class="comp-item">
+        <div class="comp-item-label">Development</div>
+        <div class="comp-item-title">IoT &amp; Custom Tech Solutions</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INDUSTRIES -->
+<section class="section">
+  <div class="container">
+    <div class="section-label">Industries</div>
+    <h2 class="section-title">Where We Have Operated</h2>
+    <p class="section-sub">Deep experience across sectors where technology, regulation, and capital intersect in complex ways.</p>
+
+    <div class="industries-grid">
+      <div class="ind-card reveal">
+        <div class="ind-icon">⚗️</div>
+        <div class="ind-title">DeepTech &amp; Hard Science</div>
+      </div>
+      <div class="ind-card reveal">
+        <div class="ind-icon">🌿</div>
+        <div class="ind-title">Environmental Technologies</div>
+      </div>
+      <div class="ind-card reveal">
+        <div class="ind-icon">🏭</div>
+        <div class="ind-title">Industrial Solutions</div>
+      </div>
+      <div class="ind-card reveal">
+        <div class="ind-icon">🤖</div>
+        <div class="ind-title">AI &amp; Digital Products</div>
+      </div>
+      <div class="ind-card reveal">
+        <div class="ind-icon">🔩</div>
+        <div class="ind-title">Advanced Manufacturing</div>
+      </div>
+      <div class="ind-card reveal">
+        <div class="ind-icon">✈️</div>
+        <div class="ind-title">Tourism (proven vertical)</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section-sm">
+  <div class="container">
+    <div class="cta-box reveal">
+      <div class="section-label">Work With Us</div>
+      <h2 class="cta-title">Bring the Right Expertise to <span class="gradient-text">Your Challenge</span></h2>
+      <p class="cta-text">Our expertise is most valuable when the challenge is genuinely complex. If you're navigating DeepTech, R&amp;D, or multi-market dynamics — let's talk.</p>
+      <a href="contact.html" class="btn btn-primary">Start a Conversation &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo"><span class="logo-accent">Evo</span>Trends</a>
+        <p>Strategic commercialization partner for DeepTech and R&amp;D-driven companies entering real markets.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul class="footer-links">
+          <li><a href="services.html" class="footer-link">Funding &amp; Fundraising</a></li>
+          <li><a href="services.html" class="footer-link">Go-to-Market</a></li>
+          <li><a href="services.html" class="footer-link">R&amp;D Commercialization</a></li>
+          <li><a href="services.html" class="footer-link">Business Development</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul class="footer-links">
+          <li><a href="about.html"     class="footer-link">About</a></li>
+          <li><a href="expertise.html" class="footer-link">Expertise</a></li>
+          <li><a href="projects.html"  class="footer-link">Projects</a></li>
+          <li><a href="approach.html"  class="footer-link">Approach</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Get in Touch</h4>
+        <ul class="footer-links">
+          <li><a href="contact.html" class="footer-link">Start a Project</a></li>
+          <li><a href="contact.html?s=consortium" class="footer-link">Build a Consortium</a></li>
+          <li><a href="contact.html?s=funding"    class="footer-link">Raise Funding</a></li>
+          <li><a href="contact.html?s=market"     class="footer-link">Enter EU Market</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 EvoTrends. All rights reserved.</span>
+      <span>Commercializing Complex Technologies</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
