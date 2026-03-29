@@ -847,25 +847,26 @@ h1,h2,h3,h4,h5 { line-height: 1.15; font-weight: 700; }
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 2px;
   pointer-events: none;
   transition: opacity 0.5s ease;
 }
-.lst {
-  font-size: 28px;
-  font-weight: 900;
-  letter-spacing: 0.5px;
-  color: var(--text);
-  display: inline-block;
+/* Inline SVG letter glyphs — actual brand font paths from LogoLetters/ */
+.ls-let {
+  flex-shrink: 0;
+  color: var(--text2);
+  fill: currentColor;
+  transform-box: fill-box;
+  transform-origin: center;
   transition: opacity 0.35s ease, transform 0.35s ease;
-  line-height: 1;
 }
-/* E → becomes the circle (rendered white-ish, then becomes the globe arc) */
-.lst-circle {
+/* E → becomes the globe sphere (white-ish circle shape in this font) */
+.let-E {
   color: rgba(220, 235, 255, 0.9);
   transition: opacity 0.4s ease, transform 1.1s cubic-bezier(0.4, 0, 0.2, 1);
 }
-/* V → becomes the orange diagonal + base */
-.lst-lines {
+/* V → becomes the orange diagonal + horizontal base */
+.let-V {
   color: #FF6633;
   transition: opacity 0.4s ease, transform 1.1s cubic-bezier(0.4, 0, 0.2, 1);
 }

@@ -72,13 +72,24 @@ document.querySelectorAll('.cta-opt[data-subject]').forEach(btn => {
 
 /* ── Hero Logo Animation: EVOTRENDS → Globe ─────────────── */
 /*
+ * Uses actual brand-font letter SVG paths from LogoLetters/ folder.
+ * Letter E in this font is a circular/C-shaped glyph (nearly a full ring).
+ * Letter V has symmetric arms, each 20.6° from vertical = 69.4° from horizontal.
+ *
+ * Rotation maths:
+ *   V arms: atan(4.33529 / 1.62556) ≈ 69.4° from horizontal
+ *   V rotates CCW 69.4° → left arm lands on horizontal axis (= base of logo stand)
+ *
+ *   Logo diagonal angle: atan((70-4)/(66-8)) = atan(66/58) ≈ 48.7° from horizontal
+ *   E opening points right; rotating CW by ~41.2° tilts it to match the diagonal
+ *
  * Animation sequence:
- * 0.0s  Text "EVOTRENDS" visible (E=white, V=orange, rest=grey)
+ * 0.0s  Word "EVOTRENDS" using real letter paths (E=white/blue, V=orange, rest=grey)
  * 1.4s  O,T,R,E,N,D,S fade out staggered right→left
- * 2.9s  E and V slide toward each other
- * 3.9s  E rotates CW (→ circle), V rotates CCW (→ diagonal+base)
- * 5.0s  Cross-fade: text out, globe SVG in with stroke-draw
- * 6.8s  Globe begins slow continuous rotation around its center
+ * 2.9s  E and V slide toward each other (converge)
+ * 3.9s  E rotates CW 41.2° (C-shape → circle), V rotates CCW 69.4° (V → diagonal+base)
+ * 5.0s  Cross-fade: letter layer out, globe SVG in with stroke-draw animation
+ * 6.8s  Globe begins slow continuous rotation around its centre (40, 36)
  */
 (function initLogoAnim() {
   const lsText = document.getElementById('lsText');
@@ -89,6 +100,8 @@ document.querySelectorAll('.cta-opt[data-subject]').forEach(btn => {
   const g = id => document.getElementById(id);
 
   function move(el, transform, dur) {
+    /* transform-box:fill-box + transform-origin:center are set in CSS
+       so all transforms rotate around each letter's own geometric centre */
     el.style.transition = `transform ${dur}s cubic-bezier(0.4,0,0.2,1), opacity 0.4s ease`;
     el.style.transform  = transform;
   }
@@ -107,14 +120,14 @@ document.querySelectorAll('.cta-opt[data-subject]').forEach(btn => {
 
   /* Phase 3 — E and V converge toward each other */
   setTimeout(() => {
-    move(g('lE'), 'translateX(20px)',  0.8);
-    move(g('lV'), 'translateX(-13px)', 0.8);
+    move(g('lE'), 'translateX(24px)',  0.8);
+    move(g('lV'), 'translateX(-16px)', 0.8);
   }, 2900);
 
-  /* Phase 4 — E rotates clockwise, V rotates counter-clockwise */
+  /* Phase 4 — E rotates CW 41.2° (→ globe circle), V rotates CCW 69.4° (→ diagonal+base) */
   setTimeout(() => {
-    move(g('lE'), 'translateX(20px)  rotate(90deg)',  1.1);
-    move(g('lV'), 'translateX(-13px) rotate(-45deg)', 1.1);
+    move(g('lE'), 'translateX(24px)  rotate(41.2deg)',  1.1);
+    move(g('lV'), 'translateX(-16px) rotate(-69.4deg)', 1.1);
   }, 3900);
 
   /* Phase 5 — cross-fade text → globe SVG, then stroke-draw */
