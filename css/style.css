@@ -1,27 +1,42 @@
 /* ============================================================
    EvoTrends — Global Stylesheet
-   Dark DeepTech Theme | Cyan + Purple Accents
+   Dark DeepTech Theme
+   Brand: Navy #003366 (Pantone 281 C) + Orange #FF6633 (Pantone 151 C)
+   Logo:  Circle = navy (E rotated CW) | Lines = orange (V rotated CCW)
    ============================================================ */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
-/* ─── Variables — Nordic Sunrise Palette ─────────────────── */
-/* Navy #003366 (Pantone 281 C) + Orange #FF6633 (Pantone 151 C) */
+/* ─── Brand Color Variables ───────────────────────────────── */
 :root {
-  --bg:        #001428;   /* deep navy — darkest bg */
-  --bg2:       #001e3c;   /* mid navy  */
+  /* Backgrounds (derived from brand navy #003366) */
+  --bg:        #001428;   /* deepest navy — page background */
+  --bg2:       #001e3c;   /* mid navy — section alt */
   --bg3:       #002850;   /* card navy */
-  --border:    rgba(255, 102, 51, 0.16);   /* orange borders */
-  --border-h:  rgba(255, 102, 51, 0.45);
-  --cyan:      #FF6633;   /* PRIMARY ACCENT — Pantone 151 C orange */
+
+  /* Orange accent (Pantone 151 C — logo lines color) */
+  --cyan:      #FF6633;   /* PRIMARY ACCENT — brand orange */
   --cyan-dim:  rgba(255, 102, 51, 0.12);
-  --purple:    #FF9900;   /* SECONDARY — warm amber */
-  --purple-dim:rgba(255, 153, 0, 0.12);
-  --grad:      linear-gradient(135deg, #FF6633 0%, #FF9900 100%);
-  --navy:      #003366;   /* Pantone 281 C */
-  --text:      #F0F4FF;   /* warm white */
+  --border:    rgba(255, 102, 51, 0.15);
+  --border-h:  rgba(255, 102, 51, 0.42);
+
+  /* Warm amber — secondary accent, hover states */
+  --purple:    #E85F20;   /* darker orange-red, used for hover/depth */
+  --purple-dim:rgba(232, 95, 32, 0.12);
+
+  /* Gradient — orange to amber */
+  --grad:      linear-gradient(135deg, #FF6633 0%, #FF8C42 100%);
+
+  /* Navy (Pantone 281 C — logo circle color) */
+  --navy:      #003366;
+  --navy-light:#4A78C4;   /* logo circle color on dark bg */
+
+  /* Text */
+  --text:      #F0F4FF;   /* near-white */
   --text2:     #A8BCDB;   /* light blue-grey */
   --text3:     #607CA8;   /* muted */
+
+  /* Layout */
   --nav-h:     72px;
   --wrap:      1180px;
   --r:         10px;
@@ -815,48 +830,60 @@ h1,h2,h3,h4,h5 { line-height: 1.15; font-weight: 700; }
 .hero-visual { display: none; }
 @media (min-width: 900px) { .hero-visual { display: flex; } }
 
-/* ─── Hero Logo Animation ────────────────────────────────── */
-.hero-logo-wrap {
+/* ─── Hero Logo Stage (EVOTRENDS → Globe animation) ─────── */
+.logo-stage {
   position: relative;
-  width: 280px;
-  height: 252px;
-}
-.hero-logo-svg {
-  width: 100%;
-  height: 100%;
-  overflow: visible;
-}
-.hero-logo-inner {
-  transform-origin: 46% 44%;
-  animation: hero-logo-spin 16s linear infinite;
-  animation-delay: 2.4s;
-  animation-fill-mode: backwards;
-}
-.logo-c {
-  stroke-dasharray: 176;
-  stroke-dashoffset: 176;
-  animation: logo-draw 1.2s cubic-bezier(0.4,0,0.2,1) forwards;
-  animation-delay: 0.3s;
-}
-.logo-d {
-  stroke-dasharray: 90;
-  stroke-dashoffset: 90;
-  animation: logo-draw 0.65s cubic-bezier(0.4,0,0.2,1) forwards;
-  animation-delay: 1.15s;
-}
-.logo-b {
-  stroke-dasharray: 28;
-  stroke-dashoffset: 28;
-  animation: logo-draw 0.3s cubic-bezier(0.4,0,0.2,1) forwards;
-  animation-delay: 1.7s;
+  width: 290px;
+  height: 190px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-@keyframes logo-draw {
-  to { stroke-dashoffset: 0; }
+/* ── Text phase ── */
+.ls-text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
 }
-@keyframes hero-logo-spin {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
+.lst {
+  font-size: 28px;
+  font-weight: 900;
+  letter-spacing: 0.5px;
+  color: var(--text);
+  display: inline-block;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+  line-height: 1;
+}
+/* E → becomes the circle (rendered white-ish, then becomes the globe arc) */
+.lst-circle {
+  color: rgba(220, 235, 255, 0.9);
+  transition: opacity 0.4s ease, transform 1.1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+/* V → becomes the orange diagonal + base */
+.lst-lines {
+  color: #FF6633;
+  transition: opacity 0.4s ease, transform 1.1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ── Logo mark phase ── */
+.ls-mark {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+}
+.ls-svg {
+  width: 240px;
+  height: auto;
+  overflow: visible;
 }
 
 /* ─── Footer Brand Logo ──────────────────────────────────── */

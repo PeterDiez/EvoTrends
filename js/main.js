@@ -70,6 +70,95 @@ document.querySelectorAll('.cta-opt[data-subject]').forEach(btn => {
   });
 });
 
+/* ── Hero Logo Animation: EVOTRENDS → Globe ─────────────── */
+/*
+ * Animation sequence:
+ * 0.0s  Text "EVOTRENDS" visible (E=white, V=orange, rest=grey)
+ * 1.4s  O,T,R,E,N,D,S fade out staggered right→left
+ * 2.9s  E and V slide toward each other
+ * 3.9s  E rotates CW (→ circle), V rotates CCW (→ diagonal+base)
+ * 5.0s  Cross-fade: text out, globe SVG in with stroke-draw
+ * 6.8s  Globe begins slow continuous rotation around its center
+ */
+(function initLogoAnim() {
+  const lsText = document.getElementById('lsText');
+  const lsMark = document.getElementById('lsMark');
+  if (!lsText || !lsMark) return; // only runs on index.html
+
+  const FADE_IDS = ['lO','lT','lR','lE2','lN','lD','lS'];
+  const g = id => document.getElementById(id);
+
+  function move(el, transform, dur) {
+    el.style.transition = `transform ${dur}s cubic-bezier(0.4,0,0.2,1), opacity 0.4s ease`;
+    el.style.transform  = transform;
+  }
+
+  /* Phase 2 — stagger-fade O through S, right to left */
+  setTimeout(() => {
+    [...FADE_IDS].reverse().forEach((id, i) => {
+      setTimeout(() => {
+        const el = g(id);
+        if (!el) return;
+        el.style.opacity   = '0';
+        el.style.transform = 'translateY(-10px) scale(0.75)';
+      }, i * 85);
+    });
+  }, 1400);
+
+  /* Phase 3 — E and V converge toward each other */
+  setTimeout(() => {
+    move(g('lE'), 'translateX(20px)',  0.8);
+    move(g('lV'), 'translateX(-13px)', 0.8);
+  }, 2900);
+
+  /* Phase 4 — E rotates clockwise, V rotates counter-clockwise */
+  setTimeout(() => {
+    move(g('lE'), 'translateX(20px)  rotate(90deg)',  1.1);
+    move(g('lV'), 'translateX(-13px) rotate(-45deg)', 1.1);
+  }, 3900);
+
+  /* Phase 5 — cross-fade text → globe SVG, then stroke-draw */
+  setTimeout(() => {
+    lsText.style.opacity = '0';
+
+    lsMark.style.transition = 'opacity 0.65s ease';
+    lsMark.style.opacity    = '1';
+
+    /* Draw circle (E → globe sphere) */
+    const c = g('lsC');
+    c.style.transition = 'stroke-dashoffset 1.4s cubic-bezier(0.4,0,0.2,1)';
+    c.style.strokeDashoffset = '0';
+
+    /* Draw diagonal arm of V */
+    setTimeout(() => {
+      const d = g('lsD');
+      d.style.transition = 'stroke-dashoffset 0.7s cubic-bezier(0.4,0,0.2,1)';
+      d.style.strokeDashoffset = '0';
+    }, 950);
+
+    /* Draw horizontal base (stand) */
+    setTimeout(() => {
+      const b = g('lsB');
+      b.style.transition = 'stroke-dashoffset 0.32s cubic-bezier(0.4,0,0.2,1)';
+      b.style.strokeDashoffset = '0';
+    }, 1550);
+  }, 5000);
+
+  /* Phase 6 — slow globe rotation around circle centre (40, 36) */
+  setTimeout(() => {
+    const globe = g('lsGlobe');
+    if (!globe) return;
+    let t0 = null;
+    function spinFrame(ts) {
+      if (!t0) t0 = ts;
+      const deg = ((ts - t0) / 18000) * 360; // 18 s per revolution
+      globe.setAttribute('transform', `rotate(${deg.toFixed(3)},40,36)`);
+      requestAnimationFrame(spinFrame);
+    }
+    requestAnimationFrame(spinFrame);
+  }, 6800);
+})();
+
 /* ── Contact form pre-fill from URL params ──────────────── */
 const params  = new URLSearchParams(location.search);
 const subject = params.get('s');
