@@ -1,0 +1,73 @@
+ErrorDocument 403 /404.html
+ErrorDocument 404 /404.html
+
+DirectoryIndex page38417282.html
+
+RewriteEngine On
+
+RewriteCond %{HTTP:X-Forwarded-Proto} =http
+RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+
+RewriteCond %{REQUEST_FILENAME} /robots.txt
+RewriteCond "%{DOCUMENT_ROOT}/project7622230/robots_%{HTTP_HOST}.txt" -f
+RewriteRule ^(.*)$ robots_%{HTTP_HOST}.txt [NC,L]
+RewriteRule ^es$ page38443686.html [NC]
+RewriteRule ^es/$ page38443686.html [NC]
+
+RewriteRule ^hardware$ page38465802.html [NC]
+RewriteRule ^hardware/$ page38465802.html [NC]
+
+RewriteRule ^production$ page38473834.html [NC]
+RewriteRule ^production/$ page38473834.html [NC]
+
+RewriteRule ^catalog$ page38474068.html [NC]
+RewriteRule ^catalog/$ page38474068.html [NC]
+
+RewriteRule ^innovations$ page38474401.html [NC]
+RewriteRule ^innovations/$ page38474401.html [NC]
+
+RewriteRule ^innovations-es$ page38474468.html [NC]
+RewriteRule ^innovations-es/$ page38474468.html [NC]
+
+RewriteRule ^our-works-en$ page38487253.html [NC]
+RewriteRule ^our-works-en/$ page38487253.html [NC]
+
+RewriteRule ^production-es$ page38487291.html [NC]
+RewriteRule ^production-es/$ page38487291.html [NC]
+
+RewriteRule ^lab$ page39663424.html [NC]
+RewriteRule ^lab/$ page39663424.html [NC]
+
+RewriteRule ^hardware-es$ page39921212.html [NC]
+RewriteRule ^hardware-es/$ page39921212.html [NC]
+
+RewriteRule ^lnkr$ page61528841.html [NC]
+RewriteRule ^lnkr/$ page61528841.html [NC]
+
+RewriteRule ^g-business$ page61901541.html [NC]
+RewriteRule ^g-business/$ page61901541.html [NC]
+
+RewriteRule ^thankyou$ page61904291.html [NC]
+RewriteRule ^thankyou/$ page61904291.html [NC]
+
+RewriteRule ^user_agreement$ page62118595.html [NC]
+RewriteRule ^user_agreement/$ page62118595.html [NC]
+
+RewriteRule ^lnkr-stem$ page62639623.html [NC]
+RewriteRule ^lnkr-stem/$ page62639623.html [NC]
+
+RewriteRule ^lnkr-startup$ page62640021.html [NC]
+RewriteRule ^lnkr-startup/$ page62640021.html [NC]
+
+RewriteRule ^fabkids$ page62657461.html [NC]
+RewriteRule ^fabkids/$ page62657461.html [NC]
+
+RewriteRule ^newhome$ page65903357.html [NC]
+RewriteRule ^newhome/$ page65903357.html [NC]
+
+
+<IfModule mod_headers.c>
+	Header set X-Content-Type-Options nosniff
+	Header set X-XSS-Protection "1; mode=block"
+</IfModule>
+
