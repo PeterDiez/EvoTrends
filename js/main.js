@@ -74,22 +74,22 @@ document.querySelectorAll('.cta-opt[data-subject]').forEach(btn => {
 /*
  * Uses actual brand-font letter SVG paths from LogoLetters/ folder.
  * Letter E in this font is a circular/C-shaped glyph (nearly a full ring).
- * Letter V has symmetric arms, each 20.6° from vertical = 69.4° from horizontal.
- *
- * Rotation maths:
- *   V arms: atan(4.33529 / 1.62556) ≈ 69.4° from horizontal
- *   V rotates CCW 69.4° → left arm lands on horizontal axis (= base of logo stand)
- *
- *   Logo diagonal angle: atan((70-4)/(66-8)) = atan(66/58) ≈ 48.7° from horizontal
- *   E opening points right; rotating CW by ~41.2° tilts it to match the diagonal
+ * Letter V has symmetric arms, each 20.6° from vertical.
  *
  * Animation sequence:
  * 0.0s  Word "EVOTRENDS" using real letter paths (E=white/blue, V=orange, rest=grey)
  * 1.4s  O,T,R,E,N,D,S fade out staggered right→left
- * 2.9s  E and V slide toward each other (converge)
- * 3.9s  E rotates CW 41.2° (C-shape → circle), V rotates CCW 69.4° (V → diagonal+base)
- * 5.0s  Cross-fade: letter layer out, globe SVG in with stroke-draw animation
- * 6.8s  Globe begins slow continuous rotation around its centre (40, 36)
+ * 2.9s  E and V slide toward each other (converge) and begin rotation
+ * 3.9s  E rotates CW 41.2° (C-shape → more circular); V leans CW ~20° to settle as stand
+ * 4.8s  Cross-fade: letter layer fades out, globe SVG strokes draw in
+ * 6.4s  Globe begins slow continuous rotation around its centre (40, 36)
+ *
+ * Note on V rotation:
+ *   V leans CW (positive angle) — its right arm tips toward horizontal, suggesting
+ *   the base of the stand. The cross-fade to the static logo mark carries the story
+ *   the rest of the way: V becomes the diagonal arm + base of the globe-on-stand mark.
+ *   CCW rotation was intentionally avoided: a large CCW rotation makes V appear to
+ *   "fall apart to the left" rather than settle into stand position.
  */
 (function initLogoAnim() {
   const lsText = document.getElementById('lsText');
@@ -100,8 +100,8 @@ document.querySelectorAll('.cta-opt[data-subject]').forEach(btn => {
   const g = id => document.getElementById(id);
 
   function move(el, transform, dur) {
-    /* transform-box:fill-box + transform-origin:center are set in CSS
-       so all transforms rotate around each letter's own geometric centre */
+    /* transform-box:fill-box + transform-origin:center set in CSS → rotates
+       around each letter's own geometric centre */
     el.style.transition = `transform ${dur}s cubic-bezier(0.4,0,0.2,1), opacity 0.4s ease`;
     el.style.transform  = transform;
   }
@@ -118,44 +118,45 @@ document.querySelectorAll('.cta-opt[data-subject]').forEach(btn => {
     });
   }, 1400);
 
-  /* Phase 3 — E and V converge toward each other */
+  /* Phase 3 — E and V converge; E also begins its CW rotation toward circular */
   setTimeout(() => {
-    move(g('lE'), 'translateX(24px)',  0.8);
-    move(g('lV'), 'translateX(-16px)', 0.8);
+    move(g('lE'), 'translateX(24px) rotate(41.2deg)', 1.4);  // E closes into circle
+    move(g('lV'), 'translateX(-16px)',                 0.9);  // V slides left
   }, 2900);
 
-  /* Phase 4 — E rotates CW 41.2° (→ globe circle), V rotates CCW 69.4° (→ diagonal+base) */
+  /* Phase 4 — V settles CW into stand orientation (right arm tips toward horizontal base) */
   setTimeout(() => {
-    move(g('lE'), 'translateX(24px)  rotate(41.2deg)',  1.1);
-    move(g('lV'), 'translateX(-16px) rotate(-69.4deg)', 1.1);
-  }, 3900);
+    move(g('lV'), 'translateX(-16px) rotate(20deg)', 0.9);
+  }, 3800);
 
-  /* Phase 5 — cross-fade text → globe SVG, then stroke-draw */
+  /* Phase 5 — cross-fade text layer → globe SVG with stroke-draw
+     Starts at 4.8s (V settling animation begins at 3.8s, lasts 0.9s → settle done ~4.7s) */
   setTimeout(() => {
-    lsText.style.opacity = '0';
+    lsText.style.transition = 'opacity 0.5s ease';
+    lsText.style.opacity    = '0';
 
-    lsMark.style.transition = 'opacity 0.65s ease';
+    lsMark.style.transition = 'opacity 0.7s ease';
     lsMark.style.opacity    = '1';
 
-    /* Draw circle (E → globe sphere) */
+    /* Draw circle first — E letter becomes the globe sphere */
     const c = g('lsC');
-    c.style.transition = 'stroke-dashoffset 1.4s cubic-bezier(0.4,0,0.2,1)';
+    c.style.transition = 'stroke-dashoffset 1.3s cubic-bezier(0.4,0,0.2,1)';
     c.style.strokeDashoffset = '0';
 
-    /* Draw diagonal arm of V */
+    /* Draw diagonal arm — V becomes the supporting arm through the globe */
     setTimeout(() => {
       const d = g('lsD');
-      d.style.transition = 'stroke-dashoffset 0.7s cubic-bezier(0.4,0,0.2,1)';
+      d.style.transition = 'stroke-dashoffset 0.65s cubic-bezier(0.4,0,0.2,1)';
       d.style.strokeDashoffset = '0';
-    }, 950);
+    }, 900);
 
-    /* Draw horizontal base (stand) */
+    /* Draw horizontal base — V's second arm becomes the stand's base */
     setTimeout(() => {
       const b = g('lsB');
-      b.style.transition = 'stroke-dashoffset 0.32s cubic-bezier(0.4,0,0.2,1)';
+      b.style.transition = 'stroke-dashoffset 0.3s cubic-bezier(0.4,0,0.2,1)';
       b.style.strokeDashoffset = '0';
-    }, 1550);
-  }, 5000);
+    }, 1450);
+  }, 4800);
 
   /* Phase 6 — slow globe rotation around circle centre (40, 36) */
   setTimeout(() => {
@@ -169,7 +170,7 @@ document.querySelectorAll('.cta-opt[data-subject]').forEach(btn => {
       requestAnimationFrame(spinFrame);
     }
     requestAnimationFrame(spinFrame);
-  }, 6800);
+  }, 6400);
 })();
 
 /* ── Contact form pre-fill from URL params ──────────────── */
