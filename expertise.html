@@ -50,6 +50,34 @@
     .ind-card:hover { border-color: var(--border-h); transform: translateY(-3px); }
     .ind-icon  { font-size: 32px; margin-bottom: 12px; }
     .ind-title { font-size: 14px; font-weight: 700; }
+    .partners-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      align-items: center;
+    }
+    .partner-item {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 120px;
+      height: 60px;
+      transition: var(--t);
+    }
+    .partner-item:hover { border-color: var(--border-h); background: rgba(255,255,255,0.09); }
+    .partner-item img {
+      max-height: 34px;
+      max-width: 120px;
+      width: auto;
+      object-fit: contain;
+      filter: grayscale(1) brightness(1.8) opacity(0.7);
+      transition: var(--t);
+    }
+    .partner-item:hover img { filter: grayscale(0.3) brightness(1.4) opacity(1); }
   </style>
 </head>
 <body>
@@ -79,7 +107,7 @@
     <div class="page-header-content">
       <div class="section-label">Expertise</div>
       <h1 class="page-title">Core <span class="gradient-text">Competencies</span></h1>
-      <p class="page-subtitle">Four foundational areas of expertise that define how we think, how we work, and why we get results in environments where complexity is the norm.</p>
+      <p class="page-subtitle">Built across 20 years of operating in complex international environments — from hardware and product development to funding strategy and market entry. The through-line: structured thinking in non-obvious markets.</p>
     </div>
   </div>
 </section>
@@ -92,7 +120,7 @@
         <div class="exp-num">01</div>
         <div>
           <div class="exp-title">Venture Growth &amp; Business Tracking</div>
-          <p class="exp-desc">Structured support for early-stage and R&amp;D-driven companies focused on growth, traction and strategic decision-making. We work alongside founders and innovation teams to build the frameworks, metrics and decision processes that allow them to scale with confidence — not chaos. This includes growth strategy, KPI architecture, milestone planning and investor readiness.</p>
+          <p class="exp-desc">Structured support for early-stage and R&amp;D-driven companies — growth strategy, KPI architecture, milestone planning, and investor readiness. Built from direct experience co-founding Resto-AI (where we ran the full product-market cycle including a major strategic pivot) and advising companies like FIDCHEM through commercialization from zero. We know what structured growth looks like from the inside — not just from advisory distance.</p>
         </div>
       </div>
 
@@ -100,7 +128,7 @@
         <div class="exp-num">02</div>
         <div>
           <div class="exp-title">Scientific Approach to Market Entry</div>
-          <p class="exp-desc">Systematic transformation of ideas, technologies and prototypes into validated market solutions. We treat market entry like a scientific experiment — forming hypotheses, designing validation tests, interpreting results and iterating. This eliminates the costly mistake of building full go-to-market infrastructure around an unvalidated assumption. For complex technologies, this rigour is not optional — it is the difference between a successful launch and a failed pivot.</p>
+          <p class="exp-desc">Market entry treated like a scientific experiment: hypotheses, validation tests, results, iterations. This methodology was developed through real market entry projects in environments where assumptions fail constantly — the CIS region, Caribbean basin, and Southeast Asia — markets where standard go-to-market playbooks break down immediately. We apply the same rigor to DeepTech commercialization. In the Resto-AI project, this meant abandoning a waste-reduction hypothesis after customer discovery and pivoting to a software integration platform. That intellectual honesty is rare. It saves companies years.</p>
         </div>
       </div>
 
@@ -108,7 +136,7 @@
         <div class="exp-num">03</div>
         <div>
           <div class="exp-title">DeepTech Commercialization</div>
-          <p class="exp-desc">Bridging science and business through structured commercialization strategies. DeepTech is a different category entirely from software startups. Longer development cycles, higher capital requirements, more complex stakeholder ecosystems (labs, universities, regulators, industrial clients) and the constant challenge of communicating technical differentiation to non-technical audiences. We specialize in exactly this environment. We understand both the science and the business — which is rare and critical.</p>
+          <p class="exp-desc">Bridging science and business through structured strategy. DeepTech is different: longer cycles, higher capital needs, complex stakeholder ecosystems (labs, regulators, industrial clients), and the constant challenge of communicating technical value to non-technical audiences. We've worked hands-on with deep-tech hardware — interactive systems, robotics, CNC, 3D fabrication — and we've built commercialization strategies for environmental chemistry (FIDCHEM), AI products (Resto-AI), and education technology. We understand both ends of the conversation.</p>
         </div>
       </div>
 
@@ -116,7 +144,7 @@
         <div class="exp-num">04</div>
         <div>
           <div class="exp-title">Complex Systems Thinking</div>
-          <p class="exp-desc">Ability to operate in multi-layered environments combining technology, funding and market dynamics simultaneously. Real commercialization doesn't happen in isolated tracks. Technology decisions affect funding narratives. Market positioning affects partnership negotiations. Funding strategy affects product roadmap. We hold all these threads simultaneously and make decisions that optimize across the whole system — not just one variable at a time.</p>
+          <p class="exp-desc">Operating in multi-layered environments where technology, funding, regulation, and market dynamics move simultaneously. Real example: in complex international B2B markets, a pricing decision affects partner trust, which affects distribution reach, which affects revenue projections, which affects funding narratives. We hold all threads simultaneously. This is the skill that makes commercialization work — and it's built over 20 years of operating in environments that don't forgive linear thinking.</p>
         </div>
       </div>
     </div>
@@ -156,16 +184,28 @@
         <div class="comp-item-title">R&amp;D Consortium Building</div>
       </div>
       <div class="comp-item">
+        <div class="comp-item-label">Hardware</div>
+        <div class="comp-item-title">Deep-Tech Hardware &amp; IoT Systems</div>
+      </div>
+      <div class="comp-item">
+        <div class="comp-item-label">Product</div>
+        <div class="comp-item-title">Rapid Prototyping (CAD → Production)</div>
+      </div>
+      <div class="comp-item">
         <div class="comp-item-label">Product</div>
         <div class="comp-item-title">Product Strategy &amp; Productization</div>
       </div>
       <div class="comp-item">
-        <div class="comp-item-label">Digital</div>
-        <div class="comp-item-title">AI-assisted Business Development</div>
+        <div class="comp-item-label">Media</div>
+        <div class="comp-item-title">4K Media Production &amp; Aerial</div>
       </div>
       <div class="comp-item">
-        <div class="comp-item-label">Development</div>
-        <div class="comp-item-title">IoT &amp; Custom Tech Solutions</div>
+        <div class="comp-item-label">Education</div>
+        <div class="comp-item-title">STEM / Deep-Tech Education Programs</div>
+      </div>
+      <div class="comp-item">
+        <div class="comp-item-label">Digital</div>
+        <div class="comp-item-title">AI-assisted Business Development</div>
       </div>
     </div>
   </div>
@@ -201,9 +241,54 @@
       </div>
       <div class="ind-card reveal">
         <div class="ind-icon">✈️</div>
-        <div class="ind-title">Tourism (proven vertical)</div>
+        <div class="ind-title">High-Complexity B2B Markets</div>
+      </div>
+      <div class="ind-card reveal">
+        <div class="ind-icon">🎓</div>
+        <div class="ind-title">Education Technology &amp; STEM</div>
+      </div>
+      <div class="ind-card reveal">
+        <div class="ind-icon">🎥</div>
+        <div class="ind-title">Media Production &amp; Content</div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- PARTNERS & TECHNOLOGY ECOSYSTEM -->
+<section class="section" style="background: var(--bg2);">
+  <div class="container">
+    <div class="section-label">Partners &amp; Ecosystem</div>
+    <h2 class="section-title">Technology Partners &amp; Track Record</h2>
+    <p class="section-sub">Organizations we have worked with, represented, or built solutions for — organized by sector.</p>
+
+    <!-- Tech partners -->
+    <div class="section-label" style="margin-top: 40px; margin-bottom: 20px;">Technology &amp; Hardware</div>
+    <div class="partners-strip">
+      <div class="partner-item"><img src="images/partners/smart.jpg" alt="SMART Interactive" loading="lazy"></div>
+      <div class="partner-item"><img src="images/partners/christie.jpg" alt="Christie" loading="lazy"></div>
+      <div class="partner-item"><img src="images/partners/shure.png" alt="Shure" loading="lazy"></div>
+      <div class="partner-item"><img src="images/partners/makeblock.png" alt="MakeBlock" loading="lazy"></div>
+    </div>
+
+    <!-- Education / Institutional -->
+    <div class="section-label" style="margin-top: 40px; margin-bottom: 20px;">Education &amp; Institutional</div>
+    <div class="partners-strip">
+      <div class="partner-item"><img src="images/partners/goethe-institut-2.png" alt="Goethe Institut" loading="lazy"></div>
+      <div class="partner-item"><img src="images/partners/pasch.png" alt="PASCH" loading="lazy"></div>
+      <div class="partner-item"><img src="images/partners/mpu.png" alt="Moscow Pedagogical University" loading="lazy"></div>
+    </div>
+
+    <!-- B2B Track record -->
+    <div class="section-label" style="margin-top: 40px; margin-bottom: 20px;">B2B Market Entry — Track Record</div>
+    <div class="partners-strip">
+      <div class="partner-item"><img src="images/partners/tui.png" alt="TUI" loading="lazy"></div>
+      <div class="partner-item"><img src="images/partners/coral-travel.png" alt="Coral Travel" loading="lazy"></div>
+      <div class="partner-item"><img src="images/partners/anex.svg" alt="ANEX Tour" loading="lazy"></div>
+      <div class="partner-item"><img src="images/partners/tez-tour.png" alt="TEZ Tour" loading="lazy"></div>
+    </div>
+
+    <p style="font-size: 13px; color: var(--text3); margin-top: 32px; font-style: italic;">Partner logos shown represent companies we have worked with in business development, market representation, or technology supply roles. Not all partnerships are current.</p>
   </div>
 </section>
 
