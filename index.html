@@ -18,7 +18,7 @@
 <!-- ════════════════════════════════ NAV ════════════════════ -->
 <nav class="nav">
   <div class="nav-inner">
-    <a href="index.html" class="logo"><svg class="logo-svg" viewBox="0 0 110 90" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="40" cy="36" r="27" stroke="#4A78C4" stroke-width="5.5"/><line x1="8" y1="4" x2="66" y2="70" stroke="#FF6633" stroke-width="5.5" stroke-linecap="round"/><line x1="66" y1="70" x2="90" y2="70" stroke="#FF6633" stroke-width="5.5" stroke-linecap="round"/></svg><span class="logo-wordmark"><span class="logo-accent">evo</span>trends</span></a>
+    <a href="index.html" class="logo"><svg class="logo-svg" viewBox="0 0 110 90" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="40" cy="36" r="27" stroke="#4A78C4" stroke-width="5.5"/><line x1="8" y1="4" x2="66" y2="70" stroke="#FF6633" stroke-width="5.5" stroke-linecap="round"/><line x1="66" y1="70" x2="13" y2="70" stroke="#FF6633" stroke-width="5.5" stroke-linecap="round"/></svg><span class="logo-wordmark"><span class="logo-accent">evo</span>trends</span></a>
     <div class="nav-links">
       <a href="index.html"    class="nav-link">Home</a>
       <a href="services.html" class="nav-link">Services</a>
@@ -109,8 +109,11 @@
           Circle    cx=40 cy=36 r=27   → E rotated CW = globe sphere
           Meridian  cx=40 cy=36 rx=10 ry=27 → subtle longitude line, spins WITH the sphere
           Diagonal (8,4)→(66,70)       → V arm: diagonal through globe (fixed — part of the stand)
-          Base     (66,70)→(90,70)     → V arm: horizontal stand (fixed)
-          Vertex (66,70) is shared — diagonal and base meet at same point
+          Base     (13,70)→(66,70)     → V arm: horizontal stand, runs UNDER the globe (fixed)
+          Vertex (66,70) is shared — diagonal and base meet at same point.
+          Base spans x=13→66, i.e. the full width under the circle (circle's own
+          left edge is at cx-r=13) — matches the reference logo: the foot reads as
+          a stand the globe sits ON, not a short stub trailing off past its edge.
 
           IMPORTANT: only #lsSphere (circle + meridian) spins in Phase 6. The diagonal
           and base represent the stand the globe rests on and must stay put — if they
@@ -131,9 +134,13 @@
               <line id="lsD" x1="8" y1="4" x2="66" y2="70"
                 stroke="#FF6633" stroke-width="5.5" stroke-linecap="round"
                 stroke-dasharray="88" stroke-dashoffset="88"/>
-              <line id="lsB" x1="66" y1="70" x2="90" y2="70"
+              <!-- x1/x2 order intentional: line is drawn starting AT the shared
+                   vertex (66,70) and growing left to (13,70), so the stroke-draw
+                   animation reads as "growing out of the diagonal", not appearing
+                   out of empty space on the left. -->
+              <line id="lsB" x1="66" y1="70" x2="13" y2="70"
                 stroke="#FF6633" stroke-width="5.5" stroke-linecap="round"
-                stroke-dasharray="24" stroke-dashoffset="24"/>
+                stroke-dasharray="53" stroke-dashoffset="53"/>
             </g>
           </svg>
         </div>
@@ -333,7 +340,7 @@
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <a href="index.html" class="logo"><svg class="logo-svg" viewBox="0 0 110 90" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="40" cy="36" r="27" stroke="#4A78C4" stroke-width="5.5"/><line x1="8" y1="4" x2="66" y2="70" stroke="#FF6633" stroke-width="5.5" stroke-linecap="round"/><line x1="66" y1="70" x2="90" y2="70" stroke="#FF6633" stroke-width="5.5" stroke-linecap="round"/></svg><span class="logo-wordmark"><span class="logo-accent">evo</span>trends</span></a>
+        <a href="index.html" class="logo"><svg class="logo-svg" viewBox="0 0 110 90" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="40" cy="36" r="27" stroke="#4A78C4" stroke-width="5.5"/><line x1="8" y1="4" x2="66" y2="70" stroke="#FF6633" stroke-width="5.5" stroke-linecap="round"/><line x1="66" y1="70" x2="13" y2="70" stroke="#FF6633" stroke-width="5.5" stroke-linecap="round"/></svg><span class="logo-wordmark"><span class="logo-accent">evo</span>trends</span></a>
         <p>Strategic commercialization partner for DeepTech and R&amp;D-driven companies entering real markets.</p>
       </div>
       <div class="footer-col">
