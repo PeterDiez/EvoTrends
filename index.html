@@ -106,17 +106,28 @@
         <!-- Phase 4–5: Globe mark with stroke-draw, then slow spin -->
         <!--
           SVG geometry (viewBox 0 0 110 90):
-          Circle  cx=40 cy=36 r=27  → E rotated CW = globe sphere
-          Diagonal (8,4)→(66,70)    → V arm: diagonal through globe
-          Base    (66,70)→(90,70)   → V arm: horizontal stand
+          Circle    cx=40 cy=36 r=27   → E rotated CW = globe sphere
+          Meridian  cx=40 cy=36 rx=10 ry=27 → subtle longitude line, spins WITH the sphere
+          Diagonal (8,4)→(66,70)       → V arm: diagonal through globe (fixed — part of the stand)
+          Base     (66,70)→(90,70)     → V arm: horizontal stand (fixed)
           Vertex (66,70) is shared — diagonal and base meet at same point
+
+          IMPORTANT: only #lsSphere (circle + meridian) spins in Phase 6. The diagonal
+          and base represent the stand the globe rests on and must stay put — if they
+          rotate along with the sphere they sweep around like a propeller and the mark
+          stops reading as "globe on a stand" (this was the earlier deformation bug).
         -->
         <div class="ls-mark" id="lsMark" role="img" aria-label="EvoTrends — globe on a stand">
           <svg class="ls-svg" viewBox="0 0 110 90" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <g id="lsGlobe">
-              <circle id="lsC" cx="40" cy="36" r="27"
-                stroke="#4A78C4" stroke-width="5.5"
-                stroke-dasharray="170" stroke-dashoffset="170"/>
+            <g id="lsMarkGroup">
+              <g id="lsSphere">
+                <circle id="lsC" cx="40" cy="36" r="27"
+                  stroke="#4A78C4" stroke-width="5.5"
+                  stroke-dasharray="170" stroke-dashoffset="170"/>
+                <ellipse id="lsMeridian" cx="40" cy="36" rx="10" ry="27"
+                  stroke="#4A78C4" stroke-width="2.5" stroke-opacity="0.55"
+                  stroke-dasharray="120" stroke-dashoffset="120"/>
+              </g>
               <line id="lsD" x1="8" y1="4" x2="66" y2="70"
                 stroke="#FF6633" stroke-width="5.5" stroke-linecap="round"
                 stroke-dasharray="88" stroke-dashoffset="88"/>

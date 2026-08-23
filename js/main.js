@@ -82,7 +82,19 @@ document.querySelectorAll('.cta-opt[data-subject]').forEach(btn => {
  * 2.9s  E and V slide toward each other (converge) and begin rotation
  * 3.9s  E rotates CW 41.2° (C-shape → more circular); V leans CW ~20° to settle as stand
  * 4.8s  Cross-fade: letter layer fades out, globe SVG strokes draw in
- * 6.4s  Globe begins slow continuous rotation around its centre (40, 36)
+ *       (circle → diagonal → base → meridian, each stroke-drawn in turn)
+ * 6.4s  Sphere (circle + meridian only) begins slow continuous rotation
+ *       around its centre (40, 36). The diagonal + base (the stand) do NOT
+ *       rotate — see the fix note below.
+ *
+ * Fix (2026-08-23): the sphere used to spin as one group together with the
+ * diagonal + base. Since that group isn't symmetric around the circle's
+ * centre, spinning it made the "stand" sweep around like a propeller after
+ * a couple of seconds — the mark stopped reading as "globe on a stand" and
+ * looked deformed. Fix: only #lsSphere (circle + a new meridian ellipse,
+ * added so the spin is actually visible on an otherwise symmetric circle)
+ * rotates; the diagonal (#lsD) and base (#lsB) are siblings outside that
+ * group and stay fixed.
  *
  * Note on V rotation:
  *   V leans CW (positive angle) — its right arm tips toward horizontal, suggesting
@@ -156,17 +168,28 @@ document.querySelectorAll('.cta-opt[data-subject]').forEach(btn => {
       b.style.transition = 'stroke-dashoffset 0.3s cubic-bezier(0.4,0,0.2,1)';
       b.style.strokeDashoffset = '0';
     }, 1450);
+
+    /* Draw the meridian — a subtle longitude line on the sphere, so the
+       Phase-6 spin below has something asymmetric to visibly rotate */
+    setTimeout(() => {
+      const m = g('lsMeridian');
+      if (!m) return;
+      m.style.transition = 'stroke-dashoffset 0.5s ease';
+      m.style.strokeDashoffset = '0';
+    }, 1550);
   }, 4800);
 
-  /* Phase 6 — slow globe rotation around circle centre (40, 36) */
+  /* Phase 6 — slow globe rotation around circle centre (40, 36)
+     Only #lsSphere (circle + meridian) spins. The diagonal + base stay
+     fixed as the stand — see the comment above the mark's SVG markup. */
   setTimeout(() => {
-    const globe = g('lsGlobe');
-    if (!globe) return;
+    const sphere = g('lsSphere');
+    if (!sphere) return;
     let t0 = null;
     function spinFrame(ts) {
       if (!t0) t0 = ts;
       const deg = ((ts - t0) / 18000) * 360; // 18 s per revolution
-      globe.setAttribute('transform', `rotate(${deg.toFixed(3)},40,36)`);
+      sphere.setAttribute('transform', `rotate(${deg.toFixed(3)},40,36)`);
       requestAnimationFrame(spinFrame);
     }
     requestAnimationFrame(spinFrame);
