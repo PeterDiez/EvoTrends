@@ -100,13 +100,23 @@ document.querySelectorAll('.cta-opt[data-subject]').forEach(btn => {
  * Timeline:
  * 0.0s   Word "EVOTRENDS" (E tinted blue, V orange, rest grey), fades in
  * 1.2s   O,T,R,E2,N,D,S fade out, staggered right→left
- * 2.0s   E fades out too, leaving "V" alone for a beat
- * 3.2s   Cross-fade lsText → lsMark. #lsSphere transitions scale(0.1)→1 and
- *        spins down to its settled angle (1.3s); lsD/lsB's SMIL <animate>s
- *        fire at the same moment, morphing V's arms into the stand (1.3s)
+ * 3.2s   E and V have stayed put and visible this whole time (per the
+ *        client's note: viewers must still see E and V right up to the
+ *        moment the transformation/rotation begins). Now: V dissolves away
+ *        as its replacement (the diagonal+base stand) morphs into place in
+ *        the mark; E, instead of just vanishing, rotates in place and
+ *        shifts to the globe's blue while #lsSphere spins up underneath —
+ *        so it visibly reads as "E itself, through rotation, becomes the
+ *        ring", not "E disappears and an unrelated circle appears" (the
+ *        bug reported against the previous version). E fades out only
+ *        after its rotation is under way and the real sphere is already
+ *        visible and spinning, so the two overlap instead of handing off
+ *        abruptly. lsD/lsB's SMIL <animate>s fire at the same moment,
+ *        morphing V's arms into the stand (1.3s).
  * 4.6s   Hold on the static mark (ring + stand)
- * 6.3s   Earth cross-fade pulse begins, then loops indefinitely — see
- *        startEarthPulse() below
+ * 6.3s   Earth cross-fade pulse: fades in, holds, fades out — ONCE — then
+ *        the mark rests permanently on the plain ring + stand (no earth,
+ *        no further looping). See startEarthPulse() below.
  *
  * Fix history (see PROJECT_LOG / git log for the full story): an earlier
  * version spun the whole mark (ring + stand) as one group, which made the
@@ -114,7 +124,10 @@ document.querySelectorAll('.cta-opt[data-subject]').forEach(btn => {
  * trailing off past the circle's edge instead of running under it. Both are
  * fixed here structurally — #lsSphere is the only thing that ever
  * transforms, and lsD/lsB's *final* coordinates (set as the SMIL `to`
- * value) are the already-corrected ones.
+ * value) are the already-corrected ones. A later round fixed two more
+ * reported issues: E flatly vanishing instead of visibly becoming the ring
+ * (see Phase 3/4 below), and the Earth pulse looping forever instead of
+ * playing once (see startEarthPulse below).
  */
 (function initLogoAnim() {
   const lsText = document.getElementById('lsText');
@@ -135,14 +148,60 @@ document.querySelectorAll('.cta-opt[data-subject]').forEach(btn => {
     [...FADE_IDS].reverse().forEach((id, i) => setTimeout(() => fadeOut(g(id)), i * 85));
   }, 1200);
 
-  /* Phase 3 — E fades too, leaving V alone (matches the source: the ring
-     that appears next is a new element, not E rotating into shape) */
-  setTimeout(() => fadeOut(g('lE')), 2000);
+  /* Phase 3 — nothing happens here any more: E and V both stay fully
+     visible and untouched until Phase 4, so viewers still see them right
+     up to the moment the transformation/rotation begins (client note). */
 
-  /* Phase 4 — cross-fade text → mark; spin up the sphere and morph V's arms */
+  /* Phase 4 — V dissolves away (its replacement morphs into shape in the
+     mark); E rotates in place and tints toward the globe's blue instead of
+     just fading flat, so it visibly reads as "E becomes the ring" rather
+     than vanishing while an unrelated circle appears. lsText's own opacity
+     is left alone (not animated) so E's rotation/fade are on their own,
+     independent timeline instead of being dragged down by a parent fade. */
   setTimeout(() => {
-    lsText.style.transition = 'opacity 0.5s ease';
-    lsText.style.opacity    = '0';
+    fadeOut(g('lV'));
+
+    const eLetter = g('lE');
+    if (eLetter) {
+      // E doesn't just spin in place at its own tiny letter size (which
+      // left it stranded off to the side while the much bigger ring formed
+      // elsewhere — two disconnected shapes on screen, not "E becoming the
+      // globe"). Instead, compute where the ring actually lands and fly/
+      // grow E to that exact spot while it rotates, so it visibly arrives
+      // at, and becomes, the ring. Measured live (not hard-coded) so it
+      // still lines up if the layout ever changes.
+      const eRect  = eLetter.getBoundingClientRect();
+      const markSvg = lsMark.querySelector('.ls-svg');
+      let dx = 0, dy = 0, scale = 3;
+      if (markSvg) {
+        const svgRect = markSvg.getBoundingClientRect();
+        // viewBox is "0 0 110 90"; the ring is cx=40 cy=36 r=27 in that
+        // space — convert to on-screen coordinates via the svg's own
+        // rendered box (this works even while #lsSphere inside is still
+        // scaled down, since the outer <svg> itself is never transformed).
+        const ringCenterX = svgRect.left + (40 / 110) * svgRect.width;
+        const ringCenterY = svgRect.top  + (36 / 90)  * svgRect.height;
+        const ringDiameter = (54 / 110) * svgRect.width;
+        const eCenterX = eRect.left + eRect.width / 2;
+        const eCenterY = eRect.top + eRect.height / 2;
+        dx    = ringCenterX - eCenterX;
+        dy    = ringCenterY - eCenterY;
+        scale = ringDiameter / eRect.width;
+      }
+
+      // Rotate + grow + fly to the ring's position over 0.9s while still
+      // fully opaque (this is the "E becomes the globe" beat); only start
+      // fading E out 0.5s in, once the real spinning sphere is already
+      // visible at that same spot, so the two overlap and hand off smoothly
+      // instead of E vanishing and an unrelated circle appearing.
+      eLetter.style.transition =
+        'transform 0.9s cubic-bezier(0.22,0.61,0.36,1), ' +
+        'color 0.9s ease, ' +
+        'opacity 0.5s ease 0.5s';
+      eLetter.style.transform = `translate(${dx}px, ${dy}px) rotate(-135deg) scale(${scale})`;
+      eLetter.style.color     = '#4A78C4'; // matches the ring's stroke color
+      eLetter.style.opacity   = '0';
+    }
 
     lsMark.style.transition = 'opacity 0.5s ease';
     lsMark.style.opacity    = '1';
@@ -162,7 +221,10 @@ document.querySelectorAll('.cta-opt[data-subject]').forEach(btn => {
     });
   }, 3200);
 
-  /* Phase 5 — hold, then start the looping Earth cross-fade pulse */
+  /* Phase 5 — hold, then play the Earth cross-fade pulse exactly ONCE.
+     After it fades back out, the mark rests permanently on the plain ring
+     + stand — no further looping (client note: the repeating loop read as
+     unserious/unprofessional). */
   setTimeout(startEarthPulse, 6300);
 
   function startEarthPulse() {
@@ -170,21 +232,16 @@ document.querySelectorAll('.cta-opt[data-subject]').forEach(btn => {
     if (!earth) return;
     const FADE = 1.0;   // seconds to cross-fade in/out
     const HOLD = 2.2;   // seconds to hold fully visible
-    const REST = 2.6;   // seconds to hold fully hidden before repeating
 
-    function pulse() {
+    earth.style.transition = `opacity ${FADE}s ease`;
+    earth.style.opacity    = '1';
+    // Wait for the fade-in to finish, THEN hold for HOLD before fading out
+    // (not HOLD measured from the start of the fade-in). No repeat: once
+    // this single fade-out completes, only the plain ring is left on screen.
+    setTimeout(() => {
       earth.style.transition = `opacity ${FADE}s ease`;
-      earth.style.opacity    = '1';
-      // Wait for the fade-in to finish, THEN hold for HOLD before fading out
-      // (not HOLD measured from the start of the fade-in).
-      setTimeout(() => {
-        earth.style.transition = `opacity ${FADE}s ease`;
-        earth.style.opacity    = '0';
-        // Same idea: wait for the fade-out to finish, then rest, then repeat.
-        setTimeout(pulse, (FADE + REST) * 1000);
-      }, (FADE + HOLD) * 1000);
-    }
-    pulse();
+      earth.style.opacity    = '0';
+    }, (FADE + HOLD) * 1000);
   }
 })();
 
