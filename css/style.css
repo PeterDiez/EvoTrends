@@ -890,7 +890,8 @@ h1,h2,h3,h4,h5 { line-height: 1.15; font-weight: 700; }
    transform-box:view-box makes (40px,36px) the circle's own centre in the SVG's
    own coordinate system, not each element's bounding box (which is what caused
    an earlier, unrelated letter-rotation bug — see git history). */
-#lsSphere {
+#lsSphere,
+#lsEarthGroup {
   transform-box: view-box;
   transform-origin: 40px 36px;
   transform: scale(0.1) rotate(-1121deg);

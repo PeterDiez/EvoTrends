@@ -18,7 +18,7 @@
 <!-- ════════════════════════════════ NAV ════════════════════ -->
 <nav class="nav">
   <div class="nav-inner">
-    <a href="index.html" class="logo"><svg class="logo-svg" viewBox="0 0 110 90" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="40" cy="36" r="27" stroke="#4A78C4" stroke-width="5.5"/><line x1="8" y1="4" x2="66" y2="70" stroke="#FF6633" stroke-width="5.5" stroke-linecap="round"/><line x1="66" y1="70" x2="13" y2="70" stroke="#FF6633" stroke-width="5.5" stroke-linecap="round"/></svg><span class="logo-wordmark"><span class="logo-accent">evo</span>trends</span></a>
+    <a href="index.html" class="logo"><svg class="logo-svg" viewBox="0 0 110 90" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="40" cy="36" r="27" stroke="#4A78C4" stroke-width="5.5"/><line x1="8" y1="4" x2="66" y2="70" stroke="#FF6633" stroke-width="5.5" stroke-linecap="round"/><line x1="66" y1="70" x2="13" y2="70" stroke="#FF6633" stroke-width="5.5" stroke-linecap="round"/></svg><span class="logo-wordmark"><span class="logo-accent">Evo</span>Trends</span></a>
     <div class="nav-links">
       <a href="index.html"    class="nav-link">Home</a>
       <a href="services.html" class="nav-link">Services</a>
@@ -125,9 +125,15 @@
           reference logo: the foot reads as a stand the globe sits ON, not a stub
           trailing off past its edge (see PROJECT_LOG for the earlier "za nej" bug).
 
-          IMPORTANT: only #lsSphere (circle + earth image) spins/scales. The diagonal
-          and base are siblings outside that group and never rotate — if they spin
-          along with the sphere they sweep around like a propeller (earlier bug).
+          IMPORTANT: only #lsSphere (the ring) and #lsEarthGroup (the earth photo,
+          animated in lock-step with it from main.js — see Phase 4) spin/scale. The
+          diagonal and base are siblings outside those groups and never rotate — if
+          they spin along with the sphere they sweep around like a propeller
+          (earlier bug). #lsEarthGroup is placed AFTER the stand lines in the
+          document so the earth photo paints on top of them (client note: the earth
+          must sit above the orange diagonal, not be cut off by it); the ring stroke
+          in #lsSphere keeps its original earlier position since that stacking was
+          never reported as wrong.
         -->
         <div class="ls-mark" id="lsMark" role="img" aria-label="EvoTrends — globe on a stand">
           <svg class="ls-svg" viewBox="0 0 110 90" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -140,11 +146,6 @@
               <g id="lsSphere">
                 <circle id="lsC" cx="40" cy="36" r="27" pathLength="100"
                   stroke="#4A78C4" stroke-width="5.5" stroke-dasharray="96 4"/>
-                <!-- Photographic Earth, clipped to the same circle, cross-fades in/out -->
-                <image id="lsEarth" href="images/earth-texture.jpg"
-                  x="13" y="9" width="54" height="54"
-                  clip-path="url(#lsEarthClip)" preserveAspectRatio="xMidYMid slice"
-                  opacity="0"/>
               </g>
               <!-- Stand: V's two arms as independent lines so they can morph. Both
                    start at the same symmetric-V apex (58,50) and both end at the same
@@ -164,6 +165,18 @@
                 <animate attributeName="x2" begin="indefinite" fill="freeze" dur="1.3s" from="35" to="13" calcMode="spline" keySplines="0.3 0 0.2 1"/>
                 <animate attributeName="y2" begin="indefinite" fill="freeze" dur="1.3s" from="12" to="70" calcMode="spline" keySplines="0.3 0 0.2 1"/>
               </line>
+              <!-- Photographic Earth lives in its own group, drawn AFTER the stand
+                   lines so it paints on top of them (client note: the earth photo
+                   must sit above the orange diagonal, not be cut off by it). It
+                   shares #lsSphere's exact transform (see style.css/main.js) so it
+                   stays perfectly locked to the ring's growth/spin regardless of
+                   paint order. -->
+              <g id="lsEarthGroup">
+                <image id="lsEarth" href="images/earth-texture.jpg"
+                  x="13" y="9" width="54" height="54"
+                  clip-path="url(#lsEarthClip)" preserveAspectRatio="xMidYMid slice"
+                  opacity="0"/>
+              </g>
             </g>
           </svg>
         </div>
@@ -363,7 +376,7 @@
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <a href="index.html" class="logo"><svg class="logo-svg" viewBox="0 0 110 90" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="40" cy="36" r="27" stroke="#4A78C4" stroke-width="5.5"/><line x1="8" y1="4" x2="66" y2="70" stroke="#FF6633" stroke-width="5.5" stroke-linecap="round"/><line x1="66" y1="70" x2="13" y2="70" stroke="#FF6633" stroke-width="5.5" stroke-linecap="round"/></svg><span class="logo-wordmark"><span class="logo-accent">evo</span>trends</span></a>
+        <a href="index.html" class="logo"><svg class="logo-svg" viewBox="0 0 110 90" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="40" cy="36" r="27" stroke="#4A78C4" stroke-width="5.5"/><line x1="8" y1="4" x2="66" y2="70" stroke="#FF6633" stroke-width="5.5" stroke-linecap="round"/><line x1="66" y1="70" x2="13" y2="70" stroke="#FF6633" stroke-width="5.5" stroke-linecap="round"/></svg><span class="logo-wordmark"><span class="logo-accent">Evo</span>Trends</span></a>
         <p>Strategic commercialization partner for DeepTech and R&amp;D-driven companies entering real markets.</p>
       </div>
       <div class="footer-col">

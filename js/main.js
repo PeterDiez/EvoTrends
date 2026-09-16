@@ -206,11 +206,16 @@ document.querySelectorAll('.cta-opt[data-subject]').forEach(btn => {
     lsMark.style.transition = 'opacity 0.5s ease';
     lsMark.style.opacity    = '1';
 
-    const sphere = g('lsSphere');
-    if (sphere) {
-      sphere.style.transition = 'transform 1.3s cubic-bezier(0.22,0.61,0.36,1)';
-      sphere.style.transform  = 'scale(1) rotate(-121deg)'; // settles with the gap at top-left
-    }
+    // #lsSphere (the ring) and #lsEarthGroup (the earth photo, kept as a
+    // separate, later-painted sibling so it renders above the stand lines —
+    // see index.html) must move in perfect lock-step, so both get the exact
+    // same transition/transform.
+    ['lsSphere', 'lsEarthGroup'].forEach(id => {
+      const el = g(id);
+      if (!el) return;
+      el.style.transition = 'transform 1.3s cubic-bezier(0.22,0.61,0.36,1)';
+      el.style.transform  = 'scale(1) rotate(-121deg)'; // settles with the gap at top-left
+    });
 
     ['lsD', 'lsB'].forEach(id => {
       const line = g(id);
