@@ -860,15 +860,14 @@ h1,h2,h3,h4,h5 { line-height: 1.15; font-weight: 700; }
   transform-origin: center;
   transition: opacity 0.35s ease, transform 0.35s ease;
 }
-/* E → becomes the globe sphere (white-ish circle shape in this font) */
+/* E — tinted like the globe sphere it briefly sits beside; fades out with the
+   rest of the word (no transform of its own any more — see main.js Phase 3) */
 .let-E {
   color: rgba(220, 235, 255, 0.9);
-  transition: opacity 0.4s ease, transform 1.1s cubic-bezier(0.4, 0, 0.2, 1);
 }
-/* V → becomes the orange diagonal + horizontal base */
+/* V — the letter that survives into the mark; colored to match the stand it becomes */
 .let-V {
   color: #FF6633;
-  transition: opacity 0.4s ease, transform 1.1s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* ── Logo mark phase ── */
@@ -885,6 +884,16 @@ h1,h2,h3,h4,h5 { line-height: 1.15; font-weight: 700; }
   width: 240px;
   height: auto;
   overflow: visible;
+}
+/* Sphere starts tiny and pre-spun; JS transitions it to scale(1) at its settled
+   angle, so it visibly spins down to a stop as it grows — see main.js Phase 4.
+   transform-box:view-box makes (40px,36px) the circle's own centre in the SVG's
+   own coordinate system, not each element's bounding box (which is what caused
+   an earlier, unrelated letter-rotation bug — see git history). */
+#lsSphere {
+  transform-box: view-box;
+  transform-origin: 40px 36px;
+  transform: scale(0.1) rotate(-1121deg);
 }
 
 /* ─── Footer Brand Logo ──────────────────────────────────── */

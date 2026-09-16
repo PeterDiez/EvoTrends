@@ -72,36 +72,49 @@ document.querySelectorAll('.cta-opt[data-subject]').forEach(btn => {
 
 /* ── Hero Logo Animation: EVOTRENDS → Globe ─────────────── */
 /*
- * Uses actual brand-font letter SVG paths from LogoLetters/ folder.
- * Letter E in this font is a circular/C-shaped glyph (nearly a full ring).
- * Letter V has symmetric arms, each 20.6° from vertical.
+ * Reverse-engineered from the client's original Apple Motion project
+ * (MOTION-Animation/OwnBrandsAnimation/EtoTrends/EtoTrends.motn + .mov —
+ * see that .mov for the source choreography this reproduces). Frame-by-frame
+ * analysis of the .mov (ffmpeg + pixel measurement, not guesswork) showed:
  *
- * Animation sequence:
- * 0.0s  Word "EVOTRENDS" using real letter paths (E=white/blue, V=orange, rest=grey)
- * 1.4s  O,T,R,E,N,D,S fade out staggered right→left
- * 2.9s  E and V slide toward each other (converge) and begin rotation
- * 3.9s  E rotates CW 41.2° (C-shape → more circular); V leans CW ~20° to settle as stand
- * 4.8s  Cross-fade: letter layer fades out, globe SVG strokes draw in
- *       (circle → diagonal → base → meridian, each stroke-drawn in turn)
- * 6.4s  Sphere (circle + meridian only) begins slow continuous rotation
- *       around its centre (40, 36). The diagonal + base (the stand) do NOT
- *       rotate — see the fix note below.
+ *  - The word fades down to just "V" (E fades out too — it does NOT rotate
+ *    into the ring itself, unlike this file's previous version).
+ *  - The ring is a SEPARATE element (matches Media/O.png / LogoLetters/E's
+ *    own glyph shape — both have a small gap, not a closed circle) that
+ *    grows from nothing while spinning fast, decelerating to a stop with
+ *    the gap at top-left.
+ *  - At the same time, V's two arms swing from a plain symmetric "V" into
+ *    the final diagonal + horizontal stand (a genuine shape morph, not a
+ *    rigid rotation).
+ *  - Once settled, the flat ring periodically cross-fades into a
+ *    photographic Earth and back (~6.3s–9.7s in the source, then implied
+ *    loop) — reproduced here with images/earth-texture.jpg (re-exported
+ *    from the source project's own Media/Earth.usdz texture).
  *
- * Fix (2026-08-23): the sphere used to spin as one group together with the
- * diagonal + base. Since that group isn't symmetric around the circle's
- * centre, spinning it made the "stand" sweep around like a propeller after
- * a couple of seconds — the mark stopped reading as "globe on a stand" and
- * looked deformed. Fix: only #lsSphere (circle + a new meridian ellipse,
- * added so the spin is actually visible on an otherwise symmetric circle)
- * rotates; the diagonal (#lsD) and base (#lsB) are siblings outside that
- * group and stay fixed.
+ * Simplification vs. the source: the source's opening 0–1.4s has a fancier
+ * "multiple duplicates sweeping across" intro on the wordmark. Reproducing
+ * that exactly needs a dedicated compositing effect; this version keeps the
+ * simpler fade used before. Everything from "isolate down to V" onward
+ * follows the source closely.
  *
- * Note on V rotation:
- *   V leans CW (positive angle) — its right arm tips toward horizontal, suggesting
- *   the base of the stand. The cross-fade to the static logo mark carries the story
- *   the rest of the way: V becomes the diagonal arm + base of the globe-on-stand mark.
- *   CCW rotation was intentionally avoided: a large CCW rotation makes V appear to
- *   "fall apart to the left" rather than settle into stand position.
+ * Timeline:
+ * 0.0s   Word "EVOTRENDS" (E tinted blue, V orange, rest grey), fades in
+ * 1.2s   O,T,R,E2,N,D,S fade out, staggered right→left
+ * 2.0s   E fades out too, leaving "V" alone for a beat
+ * 3.2s   Cross-fade lsText → lsMark. #lsSphere transitions scale(0.1)→1 and
+ *        spins down to its settled angle (1.3s); lsD/lsB's SMIL <animate>s
+ *        fire at the same moment, morphing V's arms into the stand (1.3s)
+ * 4.6s   Hold on the static mark (ring + stand)
+ * 6.3s   Earth cross-fade pulse begins, then loops indefinitely — see
+ *        startEarthPulse() below
+ *
+ * Fix history (see PROJECT_LOG / git log for the full story): an earlier
+ * version spun the whole mark (ring + stand) as one group, which made the
+ * stand sweep around like a propeller; then had the stand's base line
+ * trailing off past the circle's edge instead of running under it. Both are
+ * fixed here structurally — #lsSphere is the only thing that ever
+ * transforms, and lsD/lsB's *final* coordinates (set as the SMIL `to`
+ * value) are the already-corrected ones.
  */
 (function initLogoAnim() {
   const lsText = document.getElementById('lsText');
@@ -110,90 +123,69 @@ document.querySelectorAll('.cta-opt[data-subject]').forEach(btn => {
 
   const FADE_IDS = ['lO','lT','lR','lE2','lN','lD','lS'];
   const g = id => document.getElementById(id);
-
-  function move(el, transform, dur) {
-    /* transform-box:fill-box + transform-origin:center set in CSS → rotates
-       around each letter's own geometric centre */
-    el.style.transition = `transform ${dur}s cubic-bezier(0.4,0,0.2,1), opacity 0.4s ease`;
-    el.style.transform  = transform;
-  }
+  const fadeOut = (el) => {
+    if (!el) return;
+    el.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+    el.style.opacity     = '0';
+    el.style.transform   = 'translateY(-10px) scale(0.75)';
+  };
 
   /* Phase 2 — stagger-fade O through S, right to left */
   setTimeout(() => {
-    [...FADE_IDS].reverse().forEach((id, i) => {
-      setTimeout(() => {
-        const el = g(id);
-        if (!el) return;
-        el.style.opacity   = '0';
-        el.style.transform = 'translateY(-10px) scale(0.75)';
-      }, i * 85);
-    });
-  }, 1400);
+    [...FADE_IDS].reverse().forEach((id, i) => setTimeout(() => fadeOut(g(id)), i * 85));
+  }, 1200);
 
-  /* Phase 3 — E and V converge; E also begins its CW rotation toward circular */
-  setTimeout(() => {
-    move(g('lE'), 'translateX(24px) rotate(41.2deg)', 1.4);  // E closes into circle
-    move(g('lV'), 'translateX(-16px)',                 0.9);  // V slides left
-  }, 2900);
+  /* Phase 3 — E fades too, leaving V alone (matches the source: the ring
+     that appears next is a new element, not E rotating into shape) */
+  setTimeout(() => fadeOut(g('lE')), 2000);
 
-  /* Phase 4 — V settles CW into stand orientation (right arm tips toward horizontal base) */
-  setTimeout(() => {
-    move(g('lV'), 'translateX(-16px) rotate(20deg)', 0.9);
-  }, 3800);
-
-  /* Phase 5 — cross-fade text layer → globe SVG with stroke-draw
-     Starts at 4.8s (V settling animation begins at 3.8s, lasts 0.9s → settle done ~4.7s) */
+  /* Phase 4 — cross-fade text → mark; spin up the sphere and morph V's arms */
   setTimeout(() => {
     lsText.style.transition = 'opacity 0.5s ease';
     lsText.style.opacity    = '0';
 
-    lsMark.style.transition = 'opacity 0.7s ease';
+    lsMark.style.transition = 'opacity 0.5s ease';
     lsMark.style.opacity    = '1';
 
-    /* Draw circle first — E letter becomes the globe sphere */
-    const c = g('lsC');
-    c.style.transition = 'stroke-dashoffset 1.3s cubic-bezier(0.4,0,0.2,1)';
-    c.style.strokeDashoffset = '0';
-
-    /* Draw diagonal arm — V becomes the supporting arm through the globe */
-    setTimeout(() => {
-      const d = g('lsD');
-      d.style.transition = 'stroke-dashoffset 0.65s cubic-bezier(0.4,0,0.2,1)';
-      d.style.strokeDashoffset = '0';
-    }, 900);
-
-    /* Draw horizontal base — V's second arm becomes the stand's base */
-    setTimeout(() => {
-      const b = g('lsB');
-      b.style.transition = 'stroke-dashoffset 0.3s cubic-bezier(0.4,0,0.2,1)';
-      b.style.strokeDashoffset = '0';
-    }, 1450);
-
-    /* Draw the meridian — a subtle longitude line on the sphere, so the
-       Phase-6 spin below has something asymmetric to visibly rotate */
-    setTimeout(() => {
-      const m = g('lsMeridian');
-      if (!m) return;
-      m.style.transition = 'stroke-dashoffset 0.5s ease';
-      m.style.strokeDashoffset = '0';
-    }, 1550);
-  }, 4800);
-
-  /* Phase 6 — slow globe rotation around circle centre (40, 36)
-     Only #lsSphere (circle + meridian) spins. The diagonal + base stay
-     fixed as the stand — see the comment above the mark's SVG markup. */
-  setTimeout(() => {
     const sphere = g('lsSphere');
-    if (!sphere) return;
-    let t0 = null;
-    function spinFrame(ts) {
-      if (!t0) t0 = ts;
-      const deg = ((ts - t0) / 18000) * 360; // 18 s per revolution
-      sphere.setAttribute('transform', `rotate(${deg.toFixed(3)},40,36)`);
-      requestAnimationFrame(spinFrame);
+    if (sphere) {
+      sphere.style.transition = 'transform 1.3s cubic-bezier(0.22,0.61,0.36,1)';
+      sphere.style.transform  = 'scale(1) rotate(-121deg)'; // settles with the gap at top-left
     }
-    requestAnimationFrame(spinFrame);
-  }, 6400);
+
+    ['lsD', 'lsB'].forEach(id => {
+      const line = g(id);
+      if (!line) return;
+      // SMIL <animate> children declared begin="indefinite" in the markup —
+      // trigger them all together so both arms morph in lock-step.
+      Array.from(line.querySelectorAll('animate')).forEach(a => a.beginElement());
+    });
+  }, 3200);
+
+  /* Phase 5 — hold, then start the looping Earth cross-fade pulse */
+  setTimeout(startEarthPulse, 6300);
+
+  function startEarthPulse() {
+    const earth = g('lsEarth');
+    if (!earth) return;
+    const FADE = 1.0;   // seconds to cross-fade in/out
+    const HOLD = 2.2;   // seconds to hold fully visible
+    const REST = 2.6;   // seconds to hold fully hidden before repeating
+
+    function pulse() {
+      earth.style.transition = `opacity ${FADE}s ease`;
+      earth.style.opacity    = '1';
+      // Wait for the fade-in to finish, THEN hold for HOLD before fading out
+      // (not HOLD measured from the start of the fade-in).
+      setTimeout(() => {
+        earth.style.transition = `opacity ${FADE}s ease`;
+        earth.style.opacity    = '0';
+        // Same idea: wait for the fade-out to finish, then rest, then repeat.
+        setTimeout(pulse, (FADE + REST) * 1000);
+      }, (FADE + HOLD) * 1000);
+    }
+    pulse();
+  }
 })();
 
 /* ── Contact form pre-fill from URL params ──────────────── */
