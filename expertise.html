@@ -5,9 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Expertise — EvoTrends</title>
   <meta name="description" content="EvoTrends core competencies: Venture Growth, Scientific Market Entry, DeepTech Commercialization, and Complex Systems Thinking.">
+  <link rel="canonical" href="https://evotrends.pro/expertise.html">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://evotrends.pro/expertise.html">
+  <meta property="og:title" content="Expertise — EvoTrends">
+  <meta property="og:description" content="EvoTrends core competencies: Venture Growth, Scientific Market Entry, DeepTech Commercialization, and Complex Systems Thinking.">
+  <meta property="og:image" content="https://evotrends.pro/images/og-image.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Expertise — EvoTrends">
+  <meta name="twitter:description" content="EvoTrends core competencies: Venture Growth, Scientific Market Entry, DeepTech Commercialization, and Complex Systems Thinking.">
+  <meta name="twitter:image" content="https://evotrends.pro/images/og-image.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <link rel="stylesheet" href="css/style.css">
   <style>
     .competency-strip {
@@ -23,11 +38,11 @@
     @media (max-width: 800px) { .competency-strip { grid-template-columns: 1fr 1fr; } }
     @media (max-width: 500px) { .competency-strip { grid-template-columns: 1fr; } }
     .comp-item {
-      background: var(--bg2);
+      background: linear-gradient(155deg, rgba(255,255,255,0.035) 0%, rgba(255,255,255,0) 45%), var(--bg2);
       padding: 24px;
       transition: var(--t);
     }
-    .comp-item:hover { background: var(--bg3); }
+    .comp-item:hover { background: linear-gradient(155deg, rgba(255,255,255,0.045) 0%, rgba(255,255,255,0) 45%), var(--bg3); }
     .comp-item-label { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text3); margin-bottom: 6px; }
     .comp-item-title { font-size: 15px; font-weight: 700; color: var(--text); }
     .exp-blocks { display: flex; flex-direction: column; gap: 16px; }
@@ -40,7 +55,7 @@
     @media (max-width: 700px) { .industries-grid { grid-template-columns: 1fr 1fr; } }
     @media (max-width: 460px) { .industries-grid { grid-template-columns: 1fr; } }
     .ind-card {
-      background: var(--bg3);
+      background: linear-gradient(155deg, rgba(255,255,255,0.045) 0%, rgba(255,255,255,0) 45%), var(--bg3);
       border: 1px solid var(--border);
       border-radius: var(--r);
       padding: 24px 20px;
@@ -152,7 +167,7 @@
 </section>
 
 <!-- COMPETENCY AREAS -->
-<section class="section" style="background: var(--bg2);">
+<section class="section section-alt">
   <div class="container">
     <div class="section-label">Functional Competencies</div>
     <h2 class="section-title">What We Do Well</h2>
@@ -256,11 +271,17 @@
 </section>
 
 <!-- PARTNERS & TECHNOLOGY ECOSYSTEM -->
-<section class="section" style="background: var(--bg2);">
+<section class="section section-alt">
   <div class="container">
-    <div class="section-label">Partners &amp; Ecosystem</div>
+    <div class="section-label">Our Clients</div>
     <h2 class="section-title">Technology Partners &amp; Track Record</h2>
     <p class="section-sub">Organizations we have worked with, represented, or built solutions for — organized by sector.</p>
+
+    <!-- R&D -->
+    <div class="section-label" style="margin-top: 40px; margin-bottom: 20px;">Research &amp; Development</div>
+    <div class="partners-strip">
+      <div class="partner-item"><img src="images/partners/fidchem.png" alt="FIDCHEM" loading="lazy"></div>
+    </div>
 
     <!-- Tech partners -->
     <div class="section-label" style="margin-top: 40px; margin-bottom: 20px;">Technology &amp; Hardware</div>
@@ -277,6 +298,17 @@
       <div class="partner-item"><img src="images/partners/goethe-institut-2.png" alt="Goethe Institut" loading="lazy"></div>
       <div class="partner-item"><img src="images/partners/pasch.png" alt="PASCH" loading="lazy"></div>
       <div class="partner-item"><img src="images/partners/mpu.png" alt="Moscow Pedagogical University" loading="lazy"></div>
+    </div>
+
+    <!-- Hospitality International -->
+    <div class="section-label" style="margin-top: 40px; margin-bottom: 20px;">Hospitality International</div>
+    <div class="partners-strip">
+      <div class="partner-item"><img src="images/partners/plumeria.png" alt="Plumeria Resorts" loading="lazy"></div>
+      <div class="partner-item"><img src="images/partners/mcc.png" alt="Maldivian Charter Club" loading="lazy"></div>
+      <div class="partner-item"><img src="images/partners/timetodive.png" alt="TimeToDive" loading="lazy"></div>
+      <div class="partner-item"><img src="images/partners/splendid-asia.png" alt="Splendid Asia" loading="lazy"></div>
+      <div class="partner-item"><img src="images/partners/hod.png" alt="HODELPA Hotels" loading="lazy"></div>
+      <div class="partner-item"><img src="images/partners/bnovo.png" alt="Bnovo" loading="lazy"></div>
     </div>
 
     <!-- B2B Track record -->

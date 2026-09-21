@@ -1,0 +1,13 @@
+# macOS
+.DS_Store
+.fuse_hidden*
+
+# Local working/scratch folders — not part of the published site
+_to_delete/
+Claude outputs/
+MOTION-Animation/
+
+# Old exported site source (archival reference only — not the live site;
+# was accidentally tracked before and publicly served at /Source-evotrends.pro/
+# under GitHub Pages' "serve everything in the repo" behavior)
+Source-evotrends.pro/

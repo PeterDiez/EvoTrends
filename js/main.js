@@ -265,3 +265,23 @@ if (subject) {
     subjectField.value = map[subject];
   }
 }
+
+/* ── Anti-spam email reveal (contact.html) ──────────────── */
+/*
+ * The page source never contains a full "user@domain" string — only the
+ * user/domain split across data attributes — so simple regex-based spam
+ * harvesters that scrape raw HTML never see a real address. Real visitors
+ * (JS-executing browsers) get a proper clickable mailto: link, built here
+ * at runtime, with human-readable "user at domain" text.
+ */
+(function revealEmail() {
+  const el = document.getElementById('emailReveal');
+  if (!el) return;
+  const user   = el.dataset.user;
+  const domain = el.dataset.domain;
+  if (!user || !domain) return;
+  const link = document.createElement('a');
+  link.href = `mailto:${user}@${domain}`;
+  link.textContent = `${user} at ${domain}`;
+  el.replaceWith(link);
+})();
