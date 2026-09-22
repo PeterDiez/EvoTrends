@@ -1,0 +1,381 @@
+/* ============================================================
+   EvoTrends — "vZen" Concept Skin
+   Design language studied from the Framer "Zenox" template
+   (courageous-hiring-491665.framer.app / framer.com/marketplace/templates/zenox)
+   Built ON TOP of the production stylesheet: we import it, then override
+   tokens + hard-coded colors, then add new vZen-only components. This
+   keeps every existing component (nav, cards, forms, footer…) working —
+   it just repaints itself once the variables below change.
+   ============================================================ */
+
+@import url('style.css');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;800&family=Inter+Tight:wght@400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap');
+
+/* ─── Token overrides — orange/navy DeepTech → violet/blue "Zenox" ──── */
+:root {
+  --bg:        #000000;
+  --bg2:       #07070b;
+  --bg3:       #0f0f16;
+
+  --cyan:      #B583FF;                         /* primary accent (was orange) */
+  --cyan-dim:  rgba(181, 131, 255, 0.12);
+  --border:    rgba(181, 131, 255, 0.16);
+  --border-h:  rgba(181, 131, 255, 0.45);
+
+  --purple:    #417ED9;                         /* secondary accent (blue) */
+  --purple-dim:rgba(65, 126, 217, 0.14);
+
+  --grad:      linear-gradient(135deg, #DE96FF 0%, #417ED9 100%);
+  --grad2:     linear-gradient(135deg, #267ADA 0%, #BD53FB 100%);
+
+  --text:      #FFFFFF;
+  --text2:     rgba(255,255,255,0.68);
+  --text3:     rgba(255,255,255,0.42);
+}
+
+/* Flat page background: Zenox is pure black, no vignette */
+body.vzen {
+  background: #000000;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* ─── Typography system ──────────────────────────────────────────── */
+body.vzen h1, body.vzen h2, body.vzen h3, body.vzen h4,
+body.vzen .hero-title, body.vzen .page-title, body.vzen .cta-title,
+body.vzen .section-title, body.vzen .project-name, body.vzen .exp-title,
+body.vzen .step-title, body.vzen .svc-name, body.vzen .info-block h3,
+body.vzen .about-section h2, body.vzen .nda-title, body.vzen .cons-item-title,
+body.vzen .comp-item-title, body.vzen .ind-title, body.vzen .pricing-title,
+body.vzen .stat-label {
+  font-family: 'Inter Tight', 'Inter', sans-serif;
+  font-weight: 500;
+}
+body.vzen .hero-title, body.vzen .page-title { font-weight: 500; letter-spacing: -2.5px; }
+body.vzen .section-title, body.vzen .cta-title { font-weight: 600; }
+
+body.vzen .section-label, body.vzen .nav-link, body.vzen .nav-cta,
+body.vzen .form-label, body.vzen .footer-col h4, body.vzen .tag,
+body.vzen .cta-opt, body.vzen .project-role, body.vzen .comp-item-label,
+body.vzen .contact-info-label, body.vzen .topic-label, body.vzen .topic-btn,
+body.vzen .value-title, body.vzen .stat-tag, body.vzen .vz-num,
+body.vzen .vz-eyebrow, body.vzen .pricing-period, body.vzen .footer-bottom span {
+  font-family: 'DM Mono', 'Courier New', monospace;
+}
+body.vzen .section-label {
+  letter-spacing: 0.5px;
+  text-transform: none;
+  font-weight: 400;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+body.vzen .section-label .vz-num { color: var(--cyan); }
+
+body.vzen .logo-wordmark {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  font-size: 16px;
+}
+
+/* ─── Hard-coded color fixes (things style.css didn't drive from vars) ─ */
+body.vzen .nav.scrolled { border-bottom-color: rgba(181,131,255,0.22); }
+body.vzen .btn-primary:hover { background: #cba3ff; box-shadow: 0 8px 24px rgba(181,131,255,0.35); }
+body.vzen .nav-cta:hover { background: #cba3ff; box-shadow: 0 4px 16px rgba(181,131,255,0.35); }
+body.vzen .form-input:focus, body.vzen .form-textarea:focus, body.vzen .form-select:focus {
+  border-color: var(--cyan);
+  box-shadow: 0 0 0 3px rgba(181,131,255,0.1);
+}
+body.vzen .hero-grid-bg,
+body.vzen .page-header::before {
+  background-image:
+    linear-gradient(rgba(181,131,255,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(181,131,255,0.05) 1px, transparent 1px);
+}
+body.vzen .hero-glow-a { background: radial-gradient(circle, rgba(222,150,255,0.16) 0%, transparent 70%); }
+body.vzen .hero-glow-b { background: radial-gradient(circle, rgba(65,126,217,0.18) 0%, transparent 70%); }
+body.vzen .page-glow   { background: radial-gradient(circle, rgba(181,131,255,0.14) 0%, transparent 70%); }
+body.vzen .cta-box { background: linear-gradient(135deg, rgba(222,150,255,0.07) 0%, rgba(65,126,217,0.09) 100%); }
+body.vzen .cta-box::before { background: radial-gradient(ellipse at 50% 0%, rgba(181,131,255,0.1) 0%, transparent 65%); }
+body.vzen ::-webkit-scrollbar-thumb { background: rgba(181,131,255,0.3); }
+body.vzen ::-webkit-scrollbar-thumb:hover { background: rgba(181,131,255,0.55); }
+body.vzen .let-V { color: #B583FF; }
+body.vzen .tag-purple { background: rgba(65,126,217,0.1); border-color: rgba(65,126,217,0.3); color: #8fb4ee; }
+body.vzen .tag-purple:hover { background: rgba(65,126,217,0.18); border-color: #8fb4ee; }
+
+/* ─── vZen badge (small "concept" marker in the nav, non-intrusive) ── */
+.vz-badge {
+  font-family: 'DM Mono', monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.5px;
+  color: var(--cyan);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  padding: 3px 10px;
+  margin-left: 8px;
+  white-space: nowrap;
+}
+
+/* ─── Aurora backdrop — CSS-only recreation of Zenox's flowing gradient
+       light-wave (own artwork, not the template's image asset) ───────── */
+.vz-aurora {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+.vz-aurora::before, .vz-aurora::after {
+  content: '';
+  position: absolute;
+  width: 140%;
+  height: 140%;
+  left: -20%;
+  top: -30%;
+  background:
+    radial-gradient(ellipse 40% 30% at 30% 40%, rgba(222,150,255,0.55) 0%, transparent 60%),
+    radial-gradient(ellipse 35% 45% at 70% 60%, rgba(65,126,217,0.55) 0%, transparent 60%),
+    radial-gradient(ellipse 30% 30% at 55% 30%, rgba(189,83,251,0.4) 0%, transparent 60%);
+  filter: blur(40px);
+  animation: vzAuroraDrift 22s ease-in-out infinite alternate;
+  mix-blend-mode: screen;
+}
+.vz-aurora::after {
+  animation-duration: 30s;
+  animation-direction: alternate-reverse;
+  opacity: 0.6;
+}
+@keyframes vzAuroraDrift {
+  0%   { transform: translate(0,0) rotate(0deg) scale(1); }
+  50%  { transform: translate(3%,-4%) rotate(8deg) scale(1.08); }
+  100% { transform: translate(-4%,3%) rotate(-6deg) scale(1.02); }
+}
+.vz-aurora-grain {
+  position: absolute; inset: 0;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.035) 1px, transparent 1px);
+  background-size: 3px 3px;
+  opacity: 0.5;
+}
+@media (prefers-reduced-motion: reduce) {
+  .vz-aurora::before, .vz-aurora::after { animation: none; }
+}
+
+/* ─── Orbit ring — CSS/SVG echo of Zenox's 3D wireframe torus ──────── */
+.vz-orbit {
+  position: relative;
+  width: 180px;
+  height: 180px;
+  flex-shrink: 0;
+}
+.vz-orbit svg { width: 100%; height: 100%; }
+.vz-orbit .ring {
+  fill: none;
+  stroke-width: 0.6;
+  transform-origin: 50px 50px;
+}
+.vz-orbit .ring-a { stroke: #DE96FF; opacity: 0.85; animation: vzSpin 14s linear infinite; }
+.vz-orbit .ring-b { stroke: #417ED9; opacity: 0.6;  animation: vzSpin 20s linear infinite reverse; }
+.vz-orbit .ring-c { stroke: #BD53FB; opacity: 0.4;  animation: vzSpin 26s linear infinite; }
+@keyframes vzSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) {
+  .vz-orbit .ring-a, .vz-orbit .ring-b, .vz-orbit .ring-c { animation: none; }
+}
+
+/* ─── Numbered feature list (left accent rule, à la Zenox "Platform
+       Features") ─────────────────────────────────────────────────── */
+.vz-numlist { display: flex; flex-direction: column; }
+.vz-numitem {
+  padding: 26px 0 26px 20px;
+  border-left: 2px solid var(--border);
+  border-top: 1px solid var(--border);
+  transition: var(--t);
+}
+.vz-numlist .vz-numitem:first-child { border-top: none; }
+.vz-numitem:hover { border-left-color: var(--cyan); }
+.vz-numitem .vz-num {
+  display: block;
+  color: var(--cyan);
+  font-size: 13px;
+  margin-bottom: 8px;
+}
+.vz-numitem h4 { font-size: 18px; font-weight: 600; margin-bottom: 6px; }
+.vz-numitem p  { font-size: 14.5px; color: var(--text2); line-height: 1.6; max-width: 560px; }
+
+/* ─── Stat counters ("Insights" strip) ──────────────────────────────── */
+.vz-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  overflow: hidden;
+}
+@media (max-width: 800px) { .vz-stats { grid-template-columns: repeat(2,1fr); } }
+.vz-stat {
+  background: linear-gradient(155deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0) 45%), var(--bg3);
+  padding: 32px 24px;
+}
+.vz-stat-num {
+  font-family: 'Inter Tight', sans-serif;
+  font-weight: 600;
+  font-size: clamp(32px, 4vw, 44px);
+  letter-spacing: -1px;
+  background: var(--grad);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+  margin-bottom: 10px;
+}
+.vz-stat-label { font-size: 13.5px; color: var(--text2); line-height: 1.5; }
+
+/* ─── Marquee CTA button (stacked-text hover slide) ─────────────────── */
+.vz-marquee-btn {
+  position: relative;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 8px 14px 26px;
+  border-radius: 100px;
+  background: var(--text);
+  color: #050107;
+  font-weight: 600;
+  font-size: 15px;
+  transition: var(--t);
+}
+.vz-marquee-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(181,131,255,0.28); }
+.vz-marquee-btn .vz-mq-stack {
+  position: relative;
+  height: 1.3em;
+  overflow: hidden;
+  display: inline-block;
+}
+.vz-marquee-btn .vz-mq-stack span {
+  display: block;
+  line-height: 1.3em;
+  transition: transform 0.4s cubic-bezier(.65,0,.35,1);
+}
+.vz-marquee-btn:hover .vz-mq-stack span { transform: translateY(-1.3em); }
+.vz-marquee-btn .vz-mq-icon {
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  background: #050107;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: var(--t);
+}
+.vz-marquee-btn:hover .vz-mq-icon { transform: rotate(45deg); }
+
+/* ─── Pricing cards ──────────────────────────────────────────────── */
+.vz-pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+@media (max-width: 800px) { .vz-pricing-grid { grid-template-columns: 1fr; } }
+.vz-pricing-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 1000px) { .vz-pricing-grid.cols-3 { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 640px)  { .vz-pricing-grid.cols-3 { grid-template-columns: 1fr; } }
+.vz-pricing-card {
+  background: linear-gradient(155deg, rgba(255,255,255,0.045) 0%, rgba(255,255,255,0) 45%), var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 40px;
+  transition: var(--t);
+  position: relative;
+  overflow: hidden;
+}
+.vz-pricing-card:hover { border-color: var(--border-h); transform: translateY(-4px); }
+.vz-pricing-card.featured { border-color: var(--border-h); background: linear-gradient(155deg, rgba(181,131,255,0.09) 0%, rgba(255,255,255,0) 55%), var(--bg3); }
+.vz-pricing-tag {
+  display: inline-block;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 1px;
+  color: var(--cyan);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  padding: 5px 14px;
+  margin-bottom: 20px;
+}
+.pricing-title { font-size: 20px; font-weight: 600; margin-bottom: 8px; }
+.vz-pricing-desc { font-size: 14px; color: var(--text3); margin-bottom: 24px; min-height: 40px; }
+.vz-pricing-price {
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 38px;
+  font-weight: 600;
+  letter-spacing: -1px;
+  margin-bottom: 4px;
+}
+.pricing-period { font-size: 13px; color: var(--text3); margin-bottom: 28px; display: block; }
+.vz-pricing-list { display: flex; flex-direction: column; gap: 12px; margin-bottom: 28px; }
+.vz-pricing-list li { display: flex; gap: 10px; font-size: 14px; color: var(--text2); align-items: flex-start; }
+.vz-pricing-list li::before { content: '✓'; color: var(--cyan); flex-shrink: 0; font-weight: 700; }
+.vz-pricing-note {
+  margin-top: 24px;
+  font-size: 12.5px;
+  color: var(--text3);
+  line-height: 1.5;
+  border-top: 1px solid var(--border);
+  padding-top: 40px;
+}
+
+/* ─── Simple FAQ (native details/summary — zero JS) ─────────────────── */
+.vz-faq { display: flex; flex-direction: column; gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: var(--r); overflow: hidden; }
+.vz-faq details {
+  background: var(--bg2);
+  padding: 22px 26px;
+  transition: var(--t);
+}
+.vz-faq summary {
+  cursor: pointer;
+  font-size: 15.5px;
+  font-weight: 600;
+  color: var(--text);
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+.vz-faq summary::after {
+  content: '+';
+  font-family: 'DM Mono', monospace;
+  font-size: 20px;
+  color: var(--cyan);
+  flex-shrink: 0;
+  transition: transform 0.25s ease;
+}
+.vz-faq details[open] summary::after { transform: rotate(45deg); }
+.vz-faq p { font-size: 14px; color: var(--text2); line-height: 1.65; margin-top: 14px; }
+
+/* ─── Highlight cards (case-study pull-outs, no fabricated quotes) ──── */
+.vz-highlight-card {
+  background: linear-gradient(155deg, rgba(255,255,255,0.045) 0%, rgba(255,255,255,0) 45%), var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 28px;
+  transition: var(--t);
+  height: 100%;
+}
+.vz-highlight-card:hover { border-color: var(--border-h); transform: translateY(-4px); }
+.vz-highlight-tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 1px;
+  color: var(--cyan);
+  margin-bottom: 14px;
+  display: block;
+}
+.vz-highlight-card p { font-size: 15px; color: var(--text2); line-height: 1.6; margin-bottom: 16px; }
+.vz-highlight-card .vz-highlight-src { font-size: 13px; color: var(--text3); }
+
+/* ─── Section eyebrow used stand-alone (page header slot) ──────────── */
+.vz-eyebrow { font-size: 13px; color: var(--text3); letter-spacing: 0.5px; }
