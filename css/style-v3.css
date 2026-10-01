@@ -1,0 +1,28 @@
+/* ============================================================
+   EvoTrends — "v3" Concept Skin
+   Built ON TOP of the vZen skin (which is itself built on the
+   production stylesheet). v3 keeps the vZen layout, typography and
+   motion language, but restores the ORIGINAL brand logo colors
+   (orange lines / blue circle from the very first version of the
+   site) and recasts the primary gradient so it visibly bridges the
+   old brand orange into the new vZen purple, rather than vZen's
+   pure violet→blue gradient.
+   ============================================================ */
+
+@import url('stylevZen.css');
+
+/* ─── Brand-bridge gradient: original orange → vZen purple ─────────── */
+:root {
+  --grad:  linear-gradient(135deg, #FF6633 0%, #B583FF 100%);
+  --grad2: linear-gradient(135deg, #FF8C42 0%, #8B5CF6 100%);
+}
+
+/* Warm up the hero glow slightly so it echoes the orange logo before
+   the aurora's purple/blue takes over lower on the page */
+body.vzen .hero-glow-a {
+  background: radial-gradient(circle, rgba(255,102,51,0.16) 0%, transparent 70%);
+}
+
+/* If the orbit-ring decoration is ever used on a v3 page, let its
+   first ring nod to the brand orange too */
+.vz-orbit .ring-a { stroke: #FF6633; }
