@@ -27,7 +27,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16.png">
   <link rel="apple-touch-icon" href="../apple-touch-icon.png">
-  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/style-v3.css">
   <style>
     .contact-layout {
       display: grid;
@@ -131,7 +131,7 @@
     }
   </style>
 </head>
-<body>
+<body class="vzen">
 
 <nav class="nav">
   <div class="nav-inner">
@@ -154,10 +154,11 @@
 
 <!-- PAGE HEADER -->
 <section class="page-header">
+  <div class="vz-aurora"><div class="vz-aurora-grain"></div></div>
   <div class="page-glow"></div>
   <div class="container">
     <div class="page-header-content">
-      <div class="section-label">Contacto</div>
+      <div class="section-label"><span class="vz-num">/</span>Contacto</div>
       <h1 class="page-title">Iniciemos una <span class="gradient-text">Conversación</span></h1>
       <p class="page-subtitle">Cuéntanos en qué estás trabajando. Te responderemos en un plazo de 24 horas con una evaluación honesta de si y cómo podemos ayudarte.</p>
     </div>
@@ -352,6 +353,7 @@
 </footer>
 
 <script src="../js/main.js"></script>
+<script src="../js/v3.js"></script>
 <script>
   function setTopic(btn) {
     document.querySelectorAll('.topic-btn').forEach(b => b.classList.remove('active'));

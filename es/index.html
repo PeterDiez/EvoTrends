@@ -27,9 +27,9 @@
   <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16.png">
   <link rel="apple-touch-icon" href="../apple-touch-icon.png">
-  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/style-v3.css">
 </head>
-<body>
+<body class="vzen">
 
 <!-- ════════════════════════════════ NAV ════════════════════ -->
 <nav class="nav">
@@ -53,6 +53,7 @@
 
 <!-- ════════════════════════════════ HERO ═══════════════════ -->
 <section class="hero">
+  <div class="vz-aurora"><div class="vz-aurora-grain"></div></div>
   <div class="hero-grid-bg"></div>
   <div class="hero-glow-a"></div>
   <div class="hero-glow-b"></div>
@@ -70,7 +71,10 @@
         Socio estratégico para empresas DeepTech e I+D que necesitan ir más allá de la innovación y entrar en mercados reales — con el posicionamiento, la financiación y el alcance global adecuados.
       </p>
       <div class="hero-actions">
-        <a href="contact.html" class="btn btn-primary">Iniciar un Proyecto &rarr;</a>
+        <a href="contact.html" class="vz-marquee-btn">
+          <span class="vz-mq-stack"><span>Iniciar un Proyecto</span><span>Iniciar un Proyecto</span></span>
+          <span class="vz-mq-icon">→</span>
+        </a>
         <a href="services.html" class="btn btn-ghost">Explorar Servicios</a>
       </div>
       <div class="hero-pillars">
@@ -232,10 +236,37 @@
   </div>
 </section>
 
+<!-- ════════════════════════════ INSIGHTS / STATS ════════════ -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-label"><span class="vz-num">/</span>Trayectoria</div>
+    <h2 class="section-title">Veinte Años, Medidos en Resultados</h2>
+    <p class="section-sub">Cifras extraídas directamente de nuestra propia trayectoria — no son proyecciones.</p>
+    <div class="vz-stats reveal">
+      <div class="vz-stat">
+        <div class="vz-stat-num" data-count-to="20" data-suffix="+">0</div>
+        <div class="vz-stat-label">Años navegando mercados complejos y poco evidentes</div>
+      </div>
+      <div class="vz-stat">
+        <div class="vz-stat-num" data-count-to="100" data-suffix="+">0</div>
+        <div class="vz-stat-label">Socios B2B construidos en toda la región de la CEI</div>
+      </div>
+      <div class="vz-stat">
+        <div class="vz-stat-num" data-count-to="7" data-suffix="">0</div>
+        <div class="vz-stat-label">Áreas de servicio integradas, del prototipo a la escala global</div>
+      </div>
+      <div class="vz-stat">
+        <div class="vz-stat-num" data-count-to="2" data-suffix="">0</div>
+        <div class="vz-stat-label">Doctores en plantilla para validación de laboratorio</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ════════════════════════════ SERVICES ═══════════════════ -->
 <section class="section">
   <div class="container">
-    <div class="section-label">Qué Hacemos</div>
+    <div class="section-label"><span class="vz-num">/</span>Qué Hacemos</div>
     <h2 class="section-title">Servicios Integrales de Comercialización</h2>
     <p class="section-sub">Desde la estrategia de financiación hasta la entrada al mercado — apoyo estructurado en cada etapa crítica de la comercialización tecnológica.</p>
 
@@ -328,7 +359,7 @@
 <!-- ════════════════════════ SELECTED CASES ═════════════════ -->
 <section class="section section-alt">
   <div class="container">
-    <div class="section-label">Trabajo Seleccionado</div>
+    <div class="section-label"><span class="vz-num">/</span>Trabajo Seleccionado</div>
     <h2 class="section-title">Proyectos y Casos</h2>
     <p class="section-sub">Una selección de proyectos en sectores DeepTech e I+D — desde la estrategia hasta la ejecución.</p>
 
@@ -345,6 +376,24 @@
       </div>
     </div>
 
+    <div class="grid-3 mt-24">
+      <div class="vz-highlight-card reveal">
+        <span class="vz-highlight-tag">FIDCHEM — Caso 01</span>
+        <p>De química validada en laboratorio a presencia en mercados internacionales — actuando como socio integral de comercialización, desde el posicionamiento de mercado hasta la estrategia de financiación de Horizon Europe.</p>
+        <div class="vz-highlight-src">Química Ambiental · Horizon Europe</div>
+      </div>
+      <div class="vz-highlight-card reveal">
+        <span class="vz-highlight-tag">Resto-AI — Caso 02</span>
+        <p>Un descubrimiento profundo del cliente antes de construir el producto evita errores costosos — el pivote hacia la consolidación de la plataforma reflejó las prioridades reales de los operadores.</p>
+        <div class="vz-highlight-src">IA / SaaS · Pivote de Producto</div>
+      </div>
+      <div class="vz-highlight-card reveal">
+        <span class="vz-highlight-tag">Entrada al Mercado — Caso 03</span>
+        <p>Cero pérdidas de clientes durante la crisis del COVID-19 en 2020, construido sobre el desarrollo de socios basado en la confianza con más de 100 socios B2B en la CEI.</p>
+        <div class="vz-highlight-src">Hostelería y DMC · Canales B2B</div>
+      </div>
+    </div>
+
     <div class="text-center mt-40">
       <a href="projects.html" class="btn btn-ghost">Todos los Proyectos &rarr;</a>
     </div>
@@ -354,7 +403,7 @@
 <!-- ════════════════════════ INDUSTRIES ═════════════════════ -->
 <section class="section">
   <div class="container">
-    <div class="section-label">Sectores</div>
+    <div class="section-label"><span class="vz-num">/</span>Sectores</div>
     <h2 class="section-title">Sectores en los que Operamos</h2>
     <p class="section-sub">Experiencia probada en entornos complejos de alta tecnología donde los enfoques de consultoría tradicionales no aplican.</p>
     <div class="tags reveal">
@@ -374,7 +423,7 @@
 <section class="section-sm">
   <div class="container">
     <div class="cta-box reveal">
-      <div class="section-label">¿Listo para Empezar?</div>
+      <div class="section-label"><span class="vz-num">/</span>¿Listo para Empezar?</div>
       <h2 class="cta-title">Convierte tu Tecnología en un <span class="gradient-text">Negocio Real</span></h2>
       <p class="cta-text">Ya sea que necesites captar financiación, entrar en un nuevo mercado o construir las alianzas correctas — operamos donde los enfoques estándar se detienen.</p>
       <div class="cta-opts">
@@ -383,7 +432,10 @@
         <a href="contact.html?s=market"     class="cta-opt">Entrar al Mercado UE</a>
         <a href="contact.html?s=funding"    class="cta-opt">Captar Financiación</a>
       </div>
-      <a href="contact.html" class="btn btn-primary">Iniciar una Conversación &rarr;</a>
+      <a href="contact.html" class="vz-marquee-btn" style="justify-content:center; margin: 0 auto;">
+        <span class="vz-mq-stack"><span>Iniciar una Conversación</span><span>Iniciar una Conversación</span></span>
+        <span class="vz-mq-icon">→</span>
+      </a>
     </div>
   </div>
 </section>
@@ -432,5 +484,6 @@
 </footer>
 
 <script src="../js/main.js"></script>
+<script src="../js/v3.js"></script>
 </body>
 </html>
